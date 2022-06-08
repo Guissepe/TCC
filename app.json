@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "aula0806",
+    "slug": "aula0806",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
