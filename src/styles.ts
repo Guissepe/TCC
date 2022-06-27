@@ -1,6 +1,5 @@
 import styled from "styled-components/native"
 
-
     export const Header = styled.Text `
     color: #b6bbc4;
     font-size: 50px;
