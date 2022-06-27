@@ -26,6 +26,7 @@ const regis = true
       <Text></Text>
       <Check ></Check>
       <Button ></Button>
+      <Text></Text>
       </Body>
       )
 
