@@ -4,9 +4,9 @@
       "jsx": "react-jsx",
       "target": "es6",
       "lib": [
-        "dom",
-        "dom.iterable",
-        "esnext"
+        "DOM",
+        "DOM.Iterable",
+        "ESNext"
       ],
       "allowJs": true,
       "skipLibCheck": true,
@@ -25,5 +25,5 @@
     },
     "include": [
       "src"
-, "src/globals.d.ts", "prettier.config.js"    ],
+, "src/globals.d.ts", "prettier.config.js", "tsconfig.node.json"    ],
   }
