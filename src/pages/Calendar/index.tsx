@@ -1,5 +1,4 @@
 import { Container, Paragraph, TextInput } from './styles';
-
 export default function Calendar() {
     return (
         <Container>
