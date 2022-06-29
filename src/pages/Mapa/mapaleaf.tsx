@@ -39,15 +39,16 @@ const mapOptions = {
 }
 
 const initialPosition = {
-  lat: -25.74936185614262,
-  lng: -53.052849769592285
+  lat: -25.74922656712633,
+  lng: -53.06181907653809
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#050505',
-    height: 10000,
+
+
   },
   header: {
     height: 60,
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     padding: 7,
     right: 0,
+
   },
   mapButton: {
     alignItems: 'center',
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
 })
 
 function Map() {
-  const [zoom, setZoom] = useState(7)
+  const [zoom, setZoom] = useState(14)
   const [mapCenterPosition, setMapCenterPosition] = useState(initialPosition)
   const [ownPosition, setOwnPosition] = useState<null | LatLngLiteral>(null)
 
@@ -111,9 +113,9 @@ function Map() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Text style={styles.headerText}>expo-leaflet</Text>
-      </View>
+      </View> */}
       <View style={{ flex: 1, position: 'relative' }}>
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
@@ -155,7 +157,7 @@ function Map() {
       <Button
         onPress={() => {
           setMapCenterPosition(initialPosition)
-          setZoom(7)
+          setZoom(14)
         }}
         title="Reset Map"
       />
