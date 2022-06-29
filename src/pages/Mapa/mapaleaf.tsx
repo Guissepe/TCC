@@ -39,8 +39,8 @@ const mapOptions = {
 }
 
 const initialPosition = {
-  lat: -25.74936185614262,
-  lng: -53.052849769592285
+  lat:-25.7529759485387,
+  lng:-53.06070327758789
 }
 
 const styles = StyleSheet.create({
@@ -155,7 +155,7 @@ function Map() {
       <Button
         onPress={() => {
           setMapCenterPosition(initialPosition)
-          setZoom(7)
+          setZoom(13)
         }}
         title="Reset Map"
       />
