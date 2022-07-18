@@ -2,6 +2,7 @@ import { ExpoLeaflet } from 'expo-leaflet'
 import * as Location from 'expo-location'
 import type { LatLngLiteral } from 'leaflet'
 import React, { useEffect, useState } from 'react'
+import 'react-modern-drawer/dist/index.css'
 import {
   ActivityIndicator,
   Alert,
@@ -11,9 +12,11 @@ import {
   StyleSheet,
   Text,
   View,
+  TextInput,
 } from 'react-native'
 import { MapLayer } from 'expo-leaflet'
 import { mapMarkers, mapShapes } from './mockData'
+
 
 const mapLayers: Array<MapLayer> = [
   {
@@ -44,11 +47,25 @@ const initialPosition = {
 }
 
 const styles = StyleSheet.create({
+  searchbox:{
+    backgroundColor: '#d1d1d1',
+    borderRadius: 10,
+    position: 'absolute',
+    top: '10%',
+    right: '7%',
+  },
+  search: {
+    backgroundColor: '#ffffff',
+    flex: 0.1,
+    width: '90%',
+    height: '8vw',
+    borderRadius: 20,
+    
+  },
   container: {
     flex: 1,
     backgroundColor: '#050505',
-
-
+    position: 'relative',
   },
   header: {
     height: 60,
@@ -112,7 +129,9 @@ function Map() {
   }, [])
 
   return (
+    
     <SafeAreaView style={styles.container}>
+
       {/* <View style={styles.header}>
         <Text style={styles.headerText}>expo-leaflet</Text>
       </View> */}
@@ -120,6 +139,7 @@ function Map() {
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
           mapCenterPosition={mapCenterPosition}
+          
           mapLayers={mapLayers}
           mapMarkers={mapMarkers}
           mapOptions={mapOptions}
@@ -153,6 +173,7 @@ function Map() {
           }}
           zoom={zoom}
         />
+        
       </View>
       <Button
         onPress={() => {
@@ -161,6 +182,12 @@ function Map() {
         }}
         title="Reset Map"
       />
+      <View style={styles.searchbox}>
+        <TextInput style={styles.search}/>
+
+      </View>
+
+      
     </SafeAreaView>
   )
 }

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Text} from 'react-native';
-import {Header, Button, Input, LogInfo, Body, Check } from './styles'
+import {Header, Button, Input, LogInfo, Body} from './styles'
 import {TextInput } from '../Calendar/styles';
 import Checkbox from 'expo-checkbox';
 
@@ -16,16 +16,15 @@ const regis = true
     <Body>
       <Header > Sign in </Header>
       <LogInfo> Log in to your account</LogInfo>
+      <Input placeholder="Nome de usuário"></Input>
+      <Text></Text>
       <Input placeholder="Email"></Input>
       <Text></Text>
       <Input  placeholder="Senha" ></Input>
       <Text></Text>
-      <TextInput type="date"/>
+      <Input  placeholder="Confirmar Senha" ></Input>
       <Text></Text>
-      <Text> Genero </Text>
-      <Text></Text>
-      <Check ></Check>
-      <Button ></Button>
+      <Button><Text style={{color: 'Black', fontSize: 25, paddingLeft: '30%', paddingTop: '5%'}}> Register </Text></Button>
       <Text></Text>
       </Body>
       )
