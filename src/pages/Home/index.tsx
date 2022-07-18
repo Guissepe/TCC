@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
-import {Text} from 'react-native';
+import {Text, useWindowDimensions, Dimensions } from 'react-native';
 import {Header, Button, Input, LogInfo, Body, ButtonText, ForgotPassword} from './styles'
 
 
 function Login() {
 
-
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
 const [logado, setLogado] = useState(false);
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 
 const regis = true
 
@@ -16,13 +20,13 @@ const regis = true
     <Body>
     <Header > Log in </Header>
     <LogInfo> Create a new account here!</LogInfo>
-    <Input placeholder="Email"></Input>
+    <Input placeholder="Email" onChangeText={(email) => setEmail(email)}></Input>
     <Text></Text>
-    <Input  placeholder="Senha" ></Input>
+    <Input  placeholder="Senha" onChangeText={(password) => setPassword(password)}></Input>
     <Text></Text>
 
-    <ForgotPassword >Forgot Password?  </ForgotPassword>
-    <Button ></Button>
+    <ForgotPassword ><Text style={{color: 'lightgray', fontSize: 20}}>Esqueci minha senha</Text></ForgotPassword>
+    <Button><Text style={{color: 'Black', fontSize: 25, padding: 15}}> Login </Text></Button>
   </Body>
   )
 }

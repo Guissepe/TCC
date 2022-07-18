@@ -2,6 +2,7 @@ import { ExpoLeaflet } from 'expo-leaflet'
 import * as Location from 'expo-location'
 import type { LatLngLiteral } from 'leaflet'
 import React, { useEffect, useState } from 'react'
+import 'react-modern-drawer/dist/index.css'
 import {
   ActivityIndicator,
   Alert,
@@ -11,9 +12,11 @@ import {
   StyleSheet,
   Text,
   View,
+  TextInput,
 } from 'react-native'
 import { MapLayer } from 'expo-leaflet'
 import { mapMarkers, mapShapes } from './mockData'
+
 
 const mapLayers: Array<MapLayer> = [
   {
@@ -39,15 +42,30 @@ const mapOptions = {
 }
 
 const initialPosition = {
-  lat:-25.7529759485387,
-  lng:-53.06070327758789
+  lat: -25.74922656712633,
+  lng: -53.06181907653809
 }
 
 const styles = StyleSheet.create({
+  searchbox:{
+    backgroundColor: '#d1d1d1',
+    borderRadius: 10,
+    position: 'absolute',
+    top: '10%',
+    right: '7%',
+  },
+  search: {
+    backgroundColor: '#ffffff',
+    flex: 0.1,
+    width: '90%',
+    height: '8vw',
+    borderRadius: 20,
+    
+  },
   container: {
     flex: 1,
     backgroundColor: '#050505',
-    height: 10000,
+    position: 'relative',
   },
   header: {
     height: 60,
@@ -71,6 +89,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     padding: 7,
     right: 0,
+
   },
   mapButton: {
     alignItems: 'center',
@@ -84,7 +103,7 @@ const styles = StyleSheet.create({
 })
 
 function Map() {
-  const [zoom, setZoom] = useState(7)
+  const [zoom, setZoom] = useState(14)
   const [mapCenterPosition, setMapCenterPosition] = useState(initialPosition)
   const [ownPosition, setOwnPosition] = useState<null | LatLngLiteral>(null)
 
@@ -110,14 +129,17 @@ function Map() {
   }, [])
 
   return (
+    
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+
+      {/* <View style={styles.header}>
         <Text style={styles.headerText}>expo-leaflet</Text>
-      </View>
+      </View> */}
       <View style={{ flex: 1, position: 'relative' }}>
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
           mapCenterPosition={mapCenterPosition}
+          
           mapLayers={mapLayers}
           mapMarkers={mapMarkers}
           mapOptions={mapOptions}
@@ -151,14 +173,21 @@ function Map() {
           }}
           zoom={zoom}
         />
+        
       </View>
       <Button
         onPress={() => {
           setMapCenterPosition(initialPosition)
-          setZoom(13)
+          setZoom(14)
         }}
         title="Reset Map"
       />
+      <View style={styles.searchbox}>
+        <TextInput style={styles.search}/>
+
+      </View>
+
+      
     </SafeAreaView>
   )
 }
