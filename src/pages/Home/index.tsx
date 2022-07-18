@@ -1,31 +1,33 @@
-import React, {useState} from 'react';
-import {Text} from 'react-native';
-import {Header, Button, Input, LogInfo, Body, ButtonText, ForgotPassword} from './styles'
-
+import React, { useState } from "react";
+import { Text } from "react-native";
+import {
+  Header,
+  Button,
+  Input,
+  LogInfo,
+  Body,
+  ButtonText,
+  ForgotPassword,
+} from "./styles";
 
 function Login() {
+  const [logado, setLogado] = useState(false);
 
-
-const [logado, setLogado] = useState(false);
-
-const regis = true
-
-
+  const regis = true;
 
   return (
     <Body>
-    <Header > Log in </Header>
-    <LogInfo> Create a new account here!</LogInfo>
-    <Input placeholder="Email"></Input>
-    <Text></Text>
-    <Input  placeholder="Senha" ></Input>
-    <Text></Text>
+      <Header> Log in </Header>
+      <LogInfo> Create a new account here!</LogInfo>
+      <Input placeholder="Email" />
+      <Text />
+      <Input placeholder="Senha" />
+      <Text />
 
-    <ForgotPassword >Forgot Password?  </ForgotPassword>
-    <Button ></Button>
-  </Body>
-  )
+      <ForgotPassword>Forgot Password? </ForgotPassword>
+      <Button />
+    </Body>
+  );
 }
 
-
-export default Login
+export default Login;

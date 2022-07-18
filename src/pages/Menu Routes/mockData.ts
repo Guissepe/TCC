@@ -78,7 +78,7 @@ export const multiPolyline: MapShape = {
 };
 
 export const rectangle: MapShape = {
-  shapeType: "rectangle",
+  shapeType: "squad",
   color: "yellow",
   id: "6",
   bounds: [
