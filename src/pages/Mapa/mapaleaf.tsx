@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '8vw',
     borderRadius: 20,
-    
+
   },
   container: {
     flex: 1,
@@ -129,7 +129,7 @@ function Map() {
   }, [])
 
   return (
-    
+
     <SafeAreaView style={styles.container}>
 
       {/* <View style={styles.header}>
@@ -139,7 +139,7 @@ function Map() {
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
           mapCenterPosition={mapCenterPosition}
-          
+
           mapLayers={mapLayers}
           mapMarkers={mapMarkers}
           mapOptions={mapOptions}
@@ -173,7 +173,7 @@ function Map() {
           }}
           zoom={zoom}
         />
-        
+
       </View>
       <Button
         onPress={() => {
@@ -187,7 +187,7 @@ function Map() {
 
       </View>
 
-      
+
     </SafeAreaView>
   )
 }

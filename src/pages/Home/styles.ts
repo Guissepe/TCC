@@ -19,7 +19,20 @@ import styled from 'styled-components/native';
     font-family: -apple-system white;
     margin-left: 13vw;
     `;
-    export const Input = styled.TextInput`
+    export const Inputemail = styled.TextInput`
+    font-size: 12pw;
+    padding: 2vw;
+    margin: 2vw;
+    color: #313d4f;
+    background: #192737;
+    border-color: #313d4f;
+    border: 1px;
+    border: solid;
+    height: 20vw;
+    border-radius: 12px;
+    `;
+
+    export const InputPass = styled.TextInput`
     font-size: 12pw;
     padding: 2vw;
     margin: 2vw;
