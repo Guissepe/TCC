@@ -29,6 +29,7 @@
     "expo-status-bar": "1.3.0",
     "expo-updates": "~0.13.3",
     "firebase": "^9.9.0",
+    "formik": "^2.2.9",
     "leaflet": "^1.8.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -43,7 +44,8 @@
     "react-native-select-dropdown": "^2.0.4",
     "react-native-web": "0.17.7",
     "react-native-webview": "11.18.1",
-    "styled-components": "5.3.5"
+    "styled-components": "5.3.5",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "7.18.5",

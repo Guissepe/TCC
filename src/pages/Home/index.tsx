@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Text, useWindowDimensions, Dimensions } from 'react-native';
 import {Header, Button, Input, LogInfo, Body, ButtonText, ForgotPassword} from './styles'
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
 
 function Login() {
