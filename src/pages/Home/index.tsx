@@ -2,31 +2,46 @@ import React, {useState} from 'react';
 import {Text, useWindowDimensions, Dimensions, View } from 'react-native';
 import {Header, Button, LogInfo, Body, ButtonText, ForgotPassword, InputPass, Inputemail} from './styles'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Localization from 'expo-localization';
+// import { Conections } from './Props'
+import i18n from 'i18n-js';
+import translations from './Translations';
+
 
 
 function Login() {
 
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
-const [logado, setLogado] = useState(false);
+  // Conections(props);
+
+// const [email, setEmail] = useState("");
+// const [password, setPassword] = useState("");
+// const [logado, setLogado] = useState(false);
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 
-
   return (
     <Body>
+      <Header > Log in </Header>
+    <LogInfo> {i18n.t('food')} </LogInfo>
+    <Inputemail placeholder="Email"></Inputemail>
+    <Text></Text>
+    <InputPass  placeholder="Senha"></InputPass>
+    <Text></Text>
+    <ForgotPassword ><Text style={{color: 'lightgray', fontSize: 20}}>Esqueci minha senha</Text></ForgotPassword>
+    <Button ><Text style={{color: 'Black', fontSize: 25, padding: 15}}> Login </Text></Button>
+
     <Formik
-       initialValues={{ inputemail: '', inputPass: '' }}
+       initialValues={{ email: '', password: '' }}
 
        validate={values => {
          const errors = {};
-         if (!values.inputemail) {
-           errors.inputemail = 'Required';
+         if (!values.email) {
+           errors.email = 'Required';
          } else if (
-           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.inputemail)
+           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
          ) {
-           errors.inputemail = 'Invalid email address';
+           errors.email = 'Invalid email address';
          }
          return errors;
        }}
@@ -36,32 +51,9 @@ const windowHeight = Dimensions.get('window').height;
            setSubmitting(false);
          }, 400);
        }}
-     >
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
-      <View>
-          <Inputemail
-          onChangeText={handleChange('Inputemail')}
-          onBlur={handleBlur('Inputemail')}
-          value={values.inputemail}
-        />
-          <InputPass
-          onChangeText={handleChange('InputPass')}
-          onBlur={handleBlur('InputPass')}
-          value={values.InputPass}
-        />
-        <Button onPress={handleSubmit} title="Submit" />
-      </View>
-        )}
+    >
        {({ isSubmitting }) => (
          <Form>
-            <Header > Log in </Header>
-            <LogInfo> Create a new account here!</LogInfo>
-            <Inputemail placeholder="Email"></Inputemail>
-            <Text></Text>
-            <InputPass  placeholder="Senha"></InputPass>
-            <Text></Text>
-            <ForgotPassword ><Text style={{color: 'lightgray', fontSize: 20}}>Esqueci minha senha</Text></ForgotPassword>
-            <Button><Text style={{color: 'Black', fontSize: 25, padding: 15}}> Login </Text></Button>
            <Field type="email" name="email" />
            <ErrorMessage name="email" component="div" />
            <Field type="password" name="password" />
@@ -71,7 +63,7 @@ const windowHeight = Dimensions.get('window').height;
            </button>
          </Form>
        )}
-     </Formik>
+    </Formik>
   </Body>
   )
 }

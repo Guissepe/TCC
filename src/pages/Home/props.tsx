@@ -3,9 +3,11 @@ import React from 'react';
  import { Formik } from 'formik';
  import { InputPass, Inputemail } from './styles';
 
- export const Conections = props => (
+//  export const Conections = props => (
+export const Conections = props => (
+
   <Formik
-    initialValues={{ Inputemail: '', InputPass: '' }}
+    initialValues={{Inputemail: '', InputPass: '' }}
     onSubmit={values => console.log(values)}
   >
     {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -20,7 +22,7 @@ import React from 'react';
           onBlur={handleBlur('InputPass')}
           value={values.InputPass}
         />
-        <Button onPress={handleSubmit} title="Submit" />
+        <Button onPress={() => handleSubmit()} title="Submit" />
       </View>
     )}
   </Formik>
