@@ -57,3 +57,14 @@ export const TextinBotao = styled.Text`
   align-items: center;
   padding: 15px;
 `;
+export const Circulo = styled.Text`
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: orange;
+    margin-left:170px;
+`;
+export const Texto = styled.Text`
+  text-align: center;
+
+`;

@@ -8,6 +8,8 @@ import {
   Body,
   ButtonText,
   TextinBotao,
+  Circulo,
+  Texto
 } from "./styles";
 
 function perfil() {
@@ -17,36 +19,23 @@ function perfil() {
 
   return (
     <Body>
-      <Header>Perfil do Usuario</Header>
-      <Input
-        placeholder="Nome do Usuario"
-        onChangeText={(nomedoUsuario) => SetNomedoUsuario(nomedoUsuario)}
-      />
-      <Input
-        placeholder="Cidade"
-        onChangeText={(cidade) => setCidade(cidade)}
-      />
-      <Input
-        placeholder="Bairro"
-        onChangeText={(bairro) => setBairro(bairro)}
-      />
+
+      {/* <Header>Perfil do Usuario</Header> */}
+      <Circulo/>
+      <Texto style={{ color: "lightgray", fontSize: 50 }}>
+         Nome
+        </Texto>
+        <Texto style={{ color: "lightgray", fontSize: 50}}>
+         Email
+        </Texto>
+
       <Header />
       <Button>
         <TextinBotao>Confirmar</TextinBotao>
       </Button>
+
     </Body>
+
   );
 }
-export default perfil;
-
-// function setCidade(cidade: string): void {
-//   throw new Error("Function not implemented.");
-// }
-
-// function setNomedoUsuario(nomedoUsuario: string): void {
-//   throw new Error("Function not implemented.");
-// }
-
-// function setBairro(bairro: string): void {
-//   throw new Error("Function not implemented.");
-// }
+export default perfil

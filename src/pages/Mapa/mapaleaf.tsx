@@ -16,6 +16,7 @@ import {
 } from "react-native";
 
 import { mapMarkers, mapShapes } from "./mockData";
+import { Geb } from "./styles";
 
 const mapLayers: Array<MapLayer> = [
   {
@@ -126,6 +127,7 @@ function Map() {
   }, []);
 
   return (
+
     <SafeAreaView style={styles.container}>
       {/* <View style={styles.header}>
         <Text style={styles.headerText}>expo-leaflet</Text>
@@ -140,6 +142,7 @@ function Map() {
           mapShapes={mapShapes}
           maxZoom={20}
           onMessage={(message) => {
+
             switch (message.tag) {
               case "onMapMarkerClicked":
                 Alert.alert(
@@ -173,12 +176,28 @@ function Map() {
           setMapCenterPosition(initialPosition);
           setZoom(14);
         }}
+        title="aaa"
+      />
+
+      <Geb>
+
+
+      </Geb>
+
+      <Button
+        onPress={() => {
+          setMapCenterPosition(initialPosition);
+          setZoom(14);
+        }}
         title="Reset Map"
       />
+      {/* <Text>Teste</Text> */}
       <View style={styles.searchbox}>
         <TextInput style={styles.search} />
       </View>
     </SafeAreaView>
+
+
   );
 }
 
