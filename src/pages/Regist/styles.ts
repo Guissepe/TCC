@@ -18,7 +18,7 @@ import styled from 'styled-components/native';
     margin-left: 13vw;
     `;
 
-    export const Input = styled.TextInput`
+    export const InputEmail = styled.TextInput`
     ::placeholder {
       color: red;
     }
@@ -33,7 +33,37 @@ import styled from 'styled-components/native';
     height: 20vw;
     border-radius: 12px;
     `;
-    export const LogInfo = styled.TouchableOpacity`
+      export const InputPassword = styled.TextInput`
+      ::placeholder {
+        color: red;
+      }
+      font-size: 12pw;
+      padding: 2vw;
+      margin: 2vw;
+      color: #313d4f;
+      background: #192737;
+      border-color: #313d4f;
+      border: 1px;
+      border: solid;
+      height: 20vw;
+      border-radius: 12px;
+      `;
+      export const InputName = styled.TextInput`
+      ::placeholder {
+        color: red;
+      }
+      font-size: 12pw;
+      padding: 2vw;
+      margin: 2vw;
+      color: #313d4f;
+      background: #192737;
+      border-color: #313d4f;
+      border: 1px;
+      border: solid;
+      height: 20vw;
+      border-radius: 12px;
+      `;
+    export const LogInfo = styled.Text`
      color: #313d4f;
     font-family: BlinkMacSystemFont;
     padding-top: 30px;
@@ -41,7 +71,7 @@ import styled from 'styled-components/native';
     padding-bottom: 60px;
     font-size: 150%;
  `;
-    export const Body = styled.View`    
+    export const Body = styled.View`
     background: #000810;
     flex: 1;
     height: 100%;
@@ -53,4 +83,3 @@ import styled from 'styled-components/native';
     padding-left:35%;
     font-size: 30px;
     `;
-    

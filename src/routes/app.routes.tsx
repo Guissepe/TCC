@@ -10,7 +10,6 @@ const AppRoutes: FC <PropsGroup> = function ({Drawer}: PropsGroup) {
     <Drawer.Group>
       <Drawer.Screen name='Login' component={Login}/>
       <Drawer.Screen name='Registro' component={Regist}/>
-      {/* <Drawer.Screen name='Calendario' component={Calendar}/> */}
       <Drawer.Screen name='Mapa' component={Mapa}/>
     </Drawer.Group>
   )

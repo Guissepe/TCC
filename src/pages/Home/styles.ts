@@ -8,7 +8,8 @@ import styled from 'styled-components/native';
     padding-right: 25%;
     padding-top: 20%;
     ` ;
-    export const Button = styled.TouchableOpacity`
+    export const Button = styled.TouchableOpacity `
+
     text-align: center;
     font-size: 16vw;
     height: 16vw;
@@ -19,7 +20,7 @@ import styled from 'styled-components/native';
     font-family: -apple-system white;
     margin-left: 13vw;
     `;
-    export const Inputemail = styled.TextInput`
+    export const InputEmail = styled.TextInput`
     font-size: 12pw;
     padding: 2vw;
     margin: 2vw;
