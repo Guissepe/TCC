@@ -2,12 +2,14 @@
   "name": "aula0806",
   "version": "1.0.0",
   "main": "index.js",
+
   "scripts": {
-    "lint": "eslint \"src/**/*\"",
-    "start": "expo start --dev-client",
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider; gatsby build",
+    "build": "tsc",
     "android": "expo run:android",
     "ios": "expo run:ios",
+    "deploy": "firebase deploy --only functions",
+    "lint": "eslint \"src/**/*\"",
+    "start": "expo start --dev-client",
     "web": "expo start --web"
   },
   "dependencies": {
