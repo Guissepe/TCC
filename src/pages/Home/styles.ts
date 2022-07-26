@@ -9,10 +9,8 @@ import styled from 'styled-components/native';
     padding-top: 20%;
     ` ;
     export const Button = styled.TouchableOpacity `
-
-    text-align: center;
-    font-size: 16vw;
-    height: 16vw;
+    height: 8%;
+    width:32%;
     margin-top: 8vw;
     background-color: #117bdf;
     width: 75vw;

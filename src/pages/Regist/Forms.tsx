@@ -32,7 +32,7 @@ i18n.fallbacks = true;
 
 export default () => (
   <Formik
-    initialValues={{ email: 'ahaha', password: 'F you' , name: 'no'}}
+    initialValues={{ email: '', password: '' , name: ''}}
     validate={values => {
       const errors = {};
       if (!values.email) {
@@ -54,21 +54,25 @@ export default () => (
           onChangeText={handleChange('name')}
           onBlur={handleBlur('name')}
           value={values.name}
+          placeholder={'Nome'}
         />
           <InputEmail
           onChangeText={handleChange('email')}
           onBlur={handleBlur('email')}
           value={values.email}
+          placeholder={'Email'}
         />
           <InputPassword
           onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
           value={values.password}
+          placeholder={'Senha'}
         />
           <InputPassword
           onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
           value={values.password}
+          placeholder={'Comfirmar Senha'}
         />
         <Button onPress={() => handleSubmit()}/>
       </Body>
