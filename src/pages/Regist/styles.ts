@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
     export const Header = styled.Text `
     color: #b6bbc4;
-    font-size: 300%;
+    font-size: 12vw;
     padding-left: 28%;
     padding-right: 25%;
     padding-top: 15%;
@@ -21,7 +21,8 @@ import styled from 'styled-components/native';
     export const InputEmail = styled.TextInput`
     ::placeholder {
       color: red;
-    }
+
+    } 
     font-size: 12pw;
     padding: 2vw;
     margin: 2vw;

@@ -5,6 +5,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
+// import { getAuth, createUserWithEmailAndPassword, Auth } from "firebase/auth";
+
 
 i18n.translations = {
   en: { Login: 'Login',
@@ -27,6 +29,8 @@ i18n.translations = {
 i18n.locale = 'en';
 
 i18n.fallbacks = true;
+
+
 
 export default () => (
   <Formik
@@ -60,21 +64,27 @@ export default () => (
           value={values.password}
           placeholder={'Senha'}
         />
-       
+
         <Button onPress={() => handleSubmit()}/>
 
       </Body>
-
     )}
+
   </Formik>
+
 );
-
-
-
-
-
-
-
+// const auth = getAuth();
+// createUserWithEmailAndPassword(auth, InputEmail, InputPass)
+//   .then((userCredential) => {
+//     // Signed in
+//     const user = userCredential.user;
+//     // ...
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     // ..
+//   });
 
           //  <Header > Log in </Header>
           //   <LogInfo> Create a new account here!</LogInfo>
