@@ -3,6 +3,8 @@ import * as Location from 'expo-location'
 import type { LatLngLiteral } from 'leaflet'
 import React, { useEffect, useState } from 'react'
 import 'react-modern-drawer/dist/index.css'
+
+// import { Button } from './styles'
 import {
   ActivityIndicator,
   Alert,
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '8vw',
     borderRadius: 20,
-    
+
   },
   container: {
     flex: 1,
@@ -129,17 +131,13 @@ function Map() {
   }, [])
 
   return (
-    
-    <SafeAreaView style={styles.container}>
 
-      {/* <View style={styles.header}>
-        <Text style={styles.headerText}>expo-leaflet</Text>
-      </View> */}
+    <SafeAreaView style={styles.container}>
       <View style={{ flex: 1, position: 'relative' }}>
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
           mapCenterPosition={mapCenterPosition}
-          
+
           mapLayers={mapLayers}
           mapMarkers={mapMarkers}
           mapOptions={mapOptions}
@@ -173,7 +171,7 @@ function Map() {
           }}
           zoom={zoom}
         />
-        
+
       </View>
       <Button
         onPress={() => {
@@ -187,7 +185,7 @@ function Map() {
 
       </View>
 
-      
+
     </SafeAreaView>
   )
 }

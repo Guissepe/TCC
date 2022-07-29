@@ -8,10 +8,9 @@ import styled from 'styled-components/native';
     padding-right: 25%;
     padding-top: 20%;
     ` ;
-    export const Button = styled.TouchableOpacity`
-    text-align: center;
-    font-size: 16vw;
-    height: 16vw;
+    export const Button = styled.TouchableOpacity `
+    height: 8%;
+    width:32%;
     margin-top: 8vw;
     background-color: #117bdf;
     width: 75vw;
@@ -19,7 +18,20 @@ import styled from 'styled-components/native';
     font-family: -apple-system white;
     margin-left: 13vw;
     `;
-    export const Input = styled.TextInput`
+    export const InputEmail = styled.TextInput`
+    font-size: 12pw;
+    padding: 2vw;
+    margin: 2vw;
+    color: #313d4f;
+    background: #192737;
+    border-color: #313d4f;
+    border: 1px;
+    border: solid;
+    height: 20vw;
+    border-radius: 12px;
+    `;
+
+    export const InputPass = styled.TextInput`
     font-size: 12pw;
     padding: 2vw;
     margin: 2vw;
@@ -42,6 +54,8 @@ import styled from 'styled-components/native';
     export const Body = styled.View`
     background: #000810;
       flex: 1;
+      max-width: 400px;
+      max-height: 800px
     `;
     export const ButtonText = styled.Text`
     padding-top:10px;
