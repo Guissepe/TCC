@@ -4,7 +4,6 @@ import Pe from "pages/Perfil/Perfil";
 import AppRoutes from "./app.routes";
 
 const Drawer = createDrawerNavigator();
-
 export const screenOptions = {
   headerStyle: {
     backgroundColor: "blue",

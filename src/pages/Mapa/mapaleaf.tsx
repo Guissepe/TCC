@@ -1,8 +1,10 @@
-import { ExpoLeaflet, MapLayer } from "expo-leaflet";
+import { ExpoLeaflet } from "expo-leaflet";
 import * as Location from "expo-location";
 import type { LatLngLiteral } from "leaflet";
 import React, { useEffect, useState } from "react";
 import "react-modern-drawer/dist/index.css";
+
+// import { Button } from './styles'
 import {
   ActivityIndicator,
   Alert,
@@ -147,9 +149,6 @@ function Map() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <View style={styles.header}>
-        <Text style={styles.headerText}>expo-leaflet</Text>
-      </View> */}
       <View style={{ flex: 1, position: "relative" }}>
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
