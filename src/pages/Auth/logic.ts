@@ -8,7 +8,7 @@ import {
     signOut,
 } from 'firebase/auth';
 import i18n from 'i18n-js';
-import { auth } from '../../utils/firebase';
+import { auth } from '@firebase/util';
 
 export const googleSignIn = () => {
     const provider = new GoogleAuthProvider();

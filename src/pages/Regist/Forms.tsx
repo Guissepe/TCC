@@ -25,9 +25,7 @@ i18n.translations = {
 };
 
 
-i18n.locale = 'en';
-
-i18n.fallbacks = true;
+i18n.fallbacks = false;
 
 
 export default () => (

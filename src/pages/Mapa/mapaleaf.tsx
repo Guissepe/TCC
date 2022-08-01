@@ -2,6 +2,7 @@ import { ExpoLeaflet } from 'expo-leaflet'
 import * as Location from 'expo-location'
 import type { LatLngLiteral } from 'leaflet'
 import React, { useEffect, useState } from 'react'
+import Slider from './Configs'
 import 'react-modern-drawer/dist/index.css'
 
 // import { Button } from './styles'
@@ -133,7 +134,9 @@ function Map() {
   return (
 
     <SafeAreaView style={styles.container}>
+
       <View style={{ flex: 1, position: 'relative' }}>
+
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
           mapCenterPosition={mapCenterPosition}
@@ -181,8 +184,7 @@ function Map() {
         title="Reset Map"
       />
       <View style={styles.searchbox}>
-        <TextInput style={styles.search}/>
-
+        <Slider/>
       </View>
 
 

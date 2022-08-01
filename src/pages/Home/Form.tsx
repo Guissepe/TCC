@@ -5,8 +5,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
+import * as yup from "yup";
+import auth from '@react-native-firebase/auth';
+// import { AuthProvider, useAuth } from "../Auth/index";
 // import { getAuth, createUserWithEmailAndPassword, Auth } from "firebase/auth";
-
 
 i18n.translations = {
   en: { Login: 'Login',
@@ -26,11 +28,7 @@ i18n.translations = {
   },
 };
 
-i18n.locale = 'en';
-
-i18n.fallbacks = true;
-
-
+i18n.fallbacks = false;
 
 export default () => (
   <Formik
