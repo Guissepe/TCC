@@ -9,10 +9,11 @@ import {
   Platform,
   SafeAreaView,
   StyleSheet,
-  Text,
   View,
+  Image,
+  TouchableOpacity,
 } from "react-native";
-
+import FlatListDropDown from "./droptdown";
 import { mapMarkers, mapShapes } from "./mockData";
 
 const mapLayers: Array<MapLayer> = [
@@ -39,20 +40,35 @@ const mapOptions = {
 };
 
 const initialPosition = {
-  lat: -25.74936185614262,
-  lng: -53.052849769592285,
+  lat: -25.74922656712633,
+  lng: -53.06181907653809,
 };
 
 const styles = StyleSheet.create({
+  searchbox: {
+    borderRadius: 4,
+    position: "absolute",
+    top: "15%",
+    right: "10%",
+    display: "flex",
+    alignSelf: "center",
+  },
+  search: {
+    backgroundColor: "#ffffff",
+    flex: 0.2,
+    width: "90%",
+    height: "8vw",
+    borderRadius: 10,
+  },
   container: {
     flex: 1,
     backgroundColor: "#050505",
-    height: 10000,
+    position: "relative",
   },
   header: {
     height: 60,
     backgroundColor: "dodgerblue",
-    paddingHorizontal: 1,
+    paddingHorizontal: 10,
     paddingTop: 30,
     width: "100%",
   },
@@ -77,14 +93,32 @@ const styles = StyleSheet.create({
     height: 42,
     justifyContent: "center",
     width: 42,
+    margin: 0,
   },
   mapButtonEmoji: {
     fontSize: 28,
   },
+  buttonStyle: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fcfdff",
+    margin: 1,
+    width: 30,
+    height: "2vw",
+    left: 163,
+    top: -3,
+  },
+  buttonImage: {
+    padding: 7,
+    left: 9,
+  },
+  buttonPesquise: {
+    margin: 1,
+  },
 });
 
 function Map() {
-  const [zoom, setZoom] = useState(7);
+  const [zoom, setZoom] = useState(14);
   const [mapCenterPosition, setMapCenterPosition] = useState(initialPosition);
   const [ownPosition, setOwnPosition] = useState<null | LatLngLiteral>(null);
 
@@ -111,9 +145,9 @@ function Map() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Text style={styles.headerText}>expo-leaflet</Text>
-      </View>
+      </View> */}
       <View style={{ flex: 1, position: "relative" }}>
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
@@ -155,49 +189,21 @@ function Map() {
       <Button
         onPress={() => {
           setMapCenterPosition(initialPosition);
-          setZoom(7);
+          setZoom(14);
         }}
         title="Reset Map"
       />
+      <View style={styles.searchbox}>
+        <TouchableOpacity style={styles.buttonStyle} activeOpacity={0.3}>
+          <Image
+            source={require("./image/lupa.png")}
+            style={styles.buttonImage}
+          />
+        </TouchableOpacity>
+        <FlatListDropDown />
+      </View>
     </SafeAreaView>
   );
 }
 
 export default Map;
-
-// {lat: -25.74936185614262, lng: -53.052849769592285},
-//         {lat: -25.748588633834604, lng: -53.052492103915796},
-//         {lat: -25.748298866864353, lng: -53.0555641651123},
-//         {lat: -25.749313538654487, lng: -53.06108951568604},
-//         {lat: -25.74928454815217, lng: -53.06111097335816},
-//         {lat: -25.745187152664922, lng: -53.062033653259284},
-//         {lat: -25.738248316362302, lng: -53.06370735168458},
-//         {lat: -25.736354078953365, lng: -53.05349349975587},
-//         {lat: -25.73634441439938, lng: -53.05250644683838},
-//         {lat: -25.73829663835028, lng: -53.052034378051765},
-//         {lat: -25.739968567034165, lng: -53.06053161621094},
-//         {lat: -25.742577888498243, lng: -53.05995225906373},
-//         {lat: -25.742249310430076, lng: -53.05713057518006},
-//         {lat: -25.74242326363417, lng: -53.05707693099976},
-
-//     return (
-
-//         </Marker>
-//         <Marker position={[ -25.75433845215439,-53.07014748529735]}></Marker>
-//         <Marker position={[-25.74242326363417, -53.05707693099976]}></Marker>
-//         <Marker position={[-25.752744252179628, -53.058065781908915]}></Marker>
-//         <Marker position={[ -25.752744252179628, -53.058065781908915]}></Marker>
-//         <Marker position={[-25.752744252179628, -53.058065781908915]}></Marker>
-//         <Marker position={[-25.752715055574416, -53.05791027244841]}></Marker>
-//         <Marker position={[-25.751502314836518, -53.05772264380956]}></Marker>
-//         <Marker position={[-25.75143467156226, -53.057765530355574]}></Marker>
-//         <Marker position={[-25.750685761308624, -53.05383605057636]}></Marker>
-//         <Marker position={[-25.75078239515508, -53.05380388566684]}></Marker>
-//         <Marker position={[-25.74934252914973, -53.0517339706421]}></Marker>
-//         <Marker position={[-25.743737568535213, -53.068492412567146]}></Marker>
-//         <Marker position={[-25.733821938942054, -53.07111024856568]}></Marker>
-//         <Marker position={[-25.73130907492065, -53.07512283325196]}></Marker>
-//         <Marker position={[-25.728583523896933, -53.061497211456306]}></Marker>
-//         <Marker position={[-25.733705961771808, -53.05866479873658]}></Marker>
-
-// export default Mapa

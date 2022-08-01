@@ -1,3 +1,4 @@
+import { exp } from "react-native-reanimated";
 import styled from "styled-components/native";
 
 /* .App {

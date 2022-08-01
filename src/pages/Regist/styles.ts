@@ -1,60 +1,54 @@
-import styled from 'styled-components/native';
+import styled from "styled-components/native";
 
-    export const Header = styled.Text `
-    color: #b6bbc4;
-    font-size: 50px;
-    padding-left: 28%;
-    padding-right: 110px;
-    padding-top: 100px;
-    ` ;
-    export const Button = styled.TouchableOpacity`
+export const Header = styled.Text`
+  color: #b6bbc4;
+  font-size: 300%;
+  padding-left: 28%;
+  padding-right: 25%;
+  padding-top: 15%;
+`;
+export const Button = styled.TouchableOpacity`
+  font-size: 16vw;
+  height: 16vw;
+  margin-top: 8vw;
+  background-color: #117bdf;
+  width: 75vw;
+  border-radius: 12px;
+  font-family: -apple-system white;
+  margin-left: 13vw;
+`;
 
-
-    height: 65px;
-    margin-top: 40px;
-    background-color: #117bdf;
-    width: 75%;
-    border-radius: 12px;
-    font-family: -apple-system white;
-    margin-left: 12%;
-
-    `;
-    export const Check = styled.TextInput`
-    :checked{
-
-    }
-    background-color: #313d4f;
-    `
-    export const Input = styled.TextInput`
-    ::placeholder {
-      color: red;
-    }
-    font-size: 18px;
-    padding: 10px;
-    margin: 10px;
-    color: #313d4f;
-    background: #192737;
-    border-color: #313d4f;
-    border: 1px;
-    border: solid;
-    height: 75px;
-    border-radius: 12px;
-    `;
-    export const LogInfo = styled.Text`
-     color: #313d4f;
-    font-family: BlinkMacSystemFont;
-    padding-top: 30px;
-    padding-left: 32%;
-    padding-bottom: 60px;
- `;
-    export const Body = styled.View`
-    height: 100%;
-    background: #000810;
-    `;
-    export const ButtonText = styled.Text`
-    padding-top:10px;
-    padding-left:35%;
-    font-size: 30px;
-    `;
-
-
+export const Input = styled.TextInput`
+  ::placeholder {
+    color: red;
+  }
+  font-size: 12pw;
+  padding: 2vw;
+  margin: 2vw;
+  color: #313d4f;
+  background: #192737;
+  border-color: #313d4f;
+  border: 1px;
+  border: solid;
+  height: 20vw;
+  border-radius: 12px;
+`;
+export const LogInfo = styled.TouchableOpacity`
+  color: #313d4f;
+  font-family: BlinkMacSystemFont;
+  padding-top: 30px;
+  padding-left: 20%;
+  padding-bottom: 60px;
+  font-size: 150%;
+`;
+export const Body = styled.View`
+  background: #000810;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+`;
+export const ButtonText = styled.Text`
+  padding-top: 10px;
+  padding-left: 35%;
+  font-size: 30px;
+`;

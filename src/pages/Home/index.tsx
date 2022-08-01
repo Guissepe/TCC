@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { Text } from "react-native";
-import {
-  Header,
-  Button,
-  Input,
-  LogInfo,
-  Body,
-  ButtonText,
-  ForgotPassword,
-} from "./styles";
+import { Header, Button, Input, LogInfo, Body, ForgotPassword } from "./styles";
 
 function Login() {
   const [logado, setLogado] = useState(false);

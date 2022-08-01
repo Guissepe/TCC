@@ -6,7 +6,7 @@ const Drawer = createDrawerNavigator();
 
 export const screenOptions = {
   headerStyle: {
-    backgroundColor: "blue",
+    backgroundColor: "#000810",
   },
   headerTintColor: "#fff",
 };
