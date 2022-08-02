@@ -44,15 +44,7 @@ export default function Slider() {
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
               <Slidescreen>
-                <AddChanges onPress={() => handleSubmit()}/>
-                {/* <InputPass
-                  onChangeText={handleChange('ptBR')}
-                  onBlur={handleBlur('ptBR')}
-                  value={values.ptBR}
-                  placeholder={'Senha'}
-                /> */}
                 <Addbutton onPress={() => handleSubmit()}/>
-
                 <Addbutton/>
                 <Addbutton/>
                 <Lengbutton onPress={Open}/>
@@ -69,13 +61,6 @@ export default function Slider() {
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
               <Slidescreen>
-                <AddChanges onPress={() => handleSubmit()}/>
-                {/* <InputPass
-                  onChangeText={handleChange('ptBR')}
-                  onBlur={handleBlur('ptBR')}
-                  value={values.ptBR}
-                  placeholder={'Senha'}
-                /> */}
                 <Lengbutton onPress={() => handleSubmit()}/>
                 <Lengbutton/>
                 <Lengbutton/>

@@ -111,8 +111,6 @@ import styled from 'styled-components/native';
       `;
       export const Slidescreen= styled.View`
       background: darkgrey;
-      width: 50%;
-      height: 50%;
       border-style: solid;
       border-color: black;
       border-radius: 5;

@@ -5,6 +5,44 @@ import {Header, Button, LogInfo, Body, ButtonText, InputPassword, InputEmail, In
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
+import * as yup from "yup";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+
+const addressSchema = yup.object().shape({
+  email: yup
+      .string().email().required(),
+  password: yup
+      .string().required(),
+  name: yup
+      .string().required(),
+});
+
+
+const auth = getAuth();
+
+const[isLog, setLog] = useState(false)
+
+const[email, setEmail] = useState('')
+
+const[password, setPassword] = useState('')
+
+const[name, setName] = useState('')
+
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+
+
+
 
 i18n.translations = {
   en: { Login: 'Login',
@@ -31,17 +69,7 @@ i18n.fallbacks = false;
 export default () => (
   <Formik
     initialValues={{ email: '', password: '' , name: ''}}
-    validate={values => {
-      const errors = {};
-      if (!values.email) {
-        errors.email = 'Required';
-      } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-      ) {
-        errors.email = 'Invalid email address';
-      }
-      return errors;
-    }}
+    validationSchema={addressSchema}
     onSubmit={values => console.log(values)}
   >
     {({ handleChange, handleBlur, handleSubmit, values }) => (
