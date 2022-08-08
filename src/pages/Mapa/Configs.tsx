@@ -1,14 +1,9 @@
 
 import React, { useState } from 'react';
-import {Text, useWindowDimensions, Dimensions, View } from 'react-native';
-import {Header, Lengbutton, Addbutton, Body, Slidescreen,AddChanges, ButtonText, ForgotPassword, InputPass, InputRname} from './styles'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Localization from 'expo-localization';
+import {View } from 'react-native';
+import {Lengbutton, Addbutton, Slidescreen} from './styles'
+import { Formik} from 'formik';
 import i18n from 'i18n-js';
-import { block } from 'react-native-reanimated';
-
-
 
 
 export default function Slider() {

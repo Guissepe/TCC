@@ -1,9 +1,9 @@
-import { ExpoLeaflet } from 'expo-leaflet'
-import * as Location from 'expo-location'
-import type { LatLngLiteral } from 'leaflet'
-import React, { useEffect, useState } from 'react'
-import Slider from './Configs'
-import 'react-modern-drawer/dist/index.css'
+import { ExpoLeaflet } from 'expo-leaflet';
+import * as Location from 'expo-location';
+import { LatLngLiteral, Marker } from 'leaflet';
+import React, { useEffect, useState } from 'react';
+import Slider from './Configs';
+import 'react-modern-drawer/dist/index.css';
 
 // import { Button } from './styles'
 import {
@@ -19,6 +19,9 @@ import {
 } from 'react-native'
 import { MapLayer } from 'expo-leaflet'
 import { mapMarkers, mapShapes } from './mockData'
+// import { useNavigation } from '@react-navigation/native'
+// import { RootStackParamList } from 'routes/types';
+// import NativeStackNavigationProp from '@react-navigation/native-stack';
 
 
 const mapLayers: Array<MapLayer> = [
@@ -131,6 +134,11 @@ function Map() {
     })
   }, [])
 
+
+{/* <NativeStacknavigationProp<RootStackParamList>> */}
+
+
+
   return (
 
     <SafeAreaView style={styles.container}>
@@ -140,7 +148,6 @@ function Map() {
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
           mapCenterPosition={mapCenterPosition}
-
           mapLayers={mapLayers}
           mapMarkers={mapMarkers}
           mapOptions={mapOptions}
@@ -174,7 +181,6 @@ function Map() {
           }}
           zoom={zoom}
         />
-
       </View>
       <Button
         onPress={() => {
@@ -199,21 +205,6 @@ export default Map;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // {lat: -25.74936185614262, lng: -53.052849769592285},
 //         {lat: -25.748588633834604, lng: -53.052492103915796},
 //         {lat: -25.748298866864353, lng: -53.0555641651123},
@@ -226,7 +217,7 @@ export default Map;
 //         {lat: -25.73829663835028, lng: -53.052034378051765},
 //         {lat: -25.739968567034165, lng: -53.06053161621094},
 //         {lat: -25.742577888498243, lng: -53.05995225906373},
-//         {lat: -25.742249310430076, lng: -53.05713057518006},
+//         {lat: -25.742249310430076, lng: -53.05713057518006} help meeeeeeeew,
 //         {lat: -25.74242326363417, lng: -53.05707693099976},
 
 //     return (

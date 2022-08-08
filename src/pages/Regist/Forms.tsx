@@ -1,46 +1,9 @@
 import React , {useState}from 'react';
 import { Formik } from 'formik';
-import {Text, useWindowDimensions, Dimensions, View } from 'react-native';
 import {Header, Button, LogInfo, Body, ButtonText, InputPassword, InputEmail, InputName} from './styles'
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
 import * as yup from "yup";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-
-const addressSchema = yup.object().shape({
-  email: yup
-      .string().email().required(),
-  password: yup
-      .string().required(),
-  name: yup
-      .string().required(),
-});
-
-
-const auth = getAuth();
-
-const[isLog, setLog] = useState(false)
-
-const[email, setEmail] = useState('')
-
-const[password, setPassword] = useState('')
-
-const[name, setName] = useState('')
-
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
-
 
 
 
@@ -66,10 +29,34 @@ i18n.translations = {
 i18n.fallbacks = false;
 
 
-export default () => (
+export default function Form() {
+
+  // const auth = getAuth();
+  // const[email, setEmail] = useState('')
+  
+  // const[password, setPassword] = useState('')
+  
+  // const[name, setName] = useState('')
+
+  const addressSchema = yup.object().shape({
+    email: yup
+        .string().email().required(),
+    password: yup
+        .string().required(),
+    name: yup
+        .string().required(),
+  });
+  
+
+  
+  // const[isLog, setLog] = useState(false)
+
+  return(
+    
   <Formik
-    initialValues={{ email: '', password: '' , name: ''}}
+    initialValues={{ email: 'aaaaaa', password: '' , name: ''}}
     validationSchema={addressSchema}
+    // onSubmit={values => createUserWithEmailAndPassword( auth, email, password)}
     onSubmit={values => console.log(values)}
   >
     {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -104,4 +91,5 @@ export default () => (
       </Body>
     )}
   </Formik>
-);
+  )
+};

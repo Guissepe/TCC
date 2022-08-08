@@ -1,39 +1,34 @@
 import React, {useState} from 'react';
-import {Text, useWindowDimensions, Dimensions, View } from 'react-native';
-import {Header, Button, LogInfo, Body, ButtonText, ForgotPassword, InputPass, InputEmail} from './styles'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {Header, Button, LogInfo, Body, ForgotPassword, InputPass, InputEmail} from './styles'
+import { Formik } from 'formik';
 import i18n from 'i18n-js';
 import * as yup from "yup";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
-
-const addressSchema = yup.object().shape({
-  email: yup
-      .string().email().required(),
-   password: yup
-      .string().required(),
-});
-
-const auth = getAuth();
-
-const[email, setEmail] = useState('')
-
-const[password, setPassword] = useState('')
+import {db} from '../../../config/firebaseinitializeApp'
+import { getFirestore, addDoc, getDocs  } from "firebase/firestore";
 
 
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-
-      const user = userCredential.user;
-
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+// import { useNavigation } from '@react-navigation/native'
+// import AppRoutes from '../../routes/app.routes'
 
 
+// const navigation = useNavigation();
+// const auth = getAuth();
+//   async function Ferdinando(){
+//     return(
+//         signInWithEmailAndPassword(auth, email, password)
+//       .then((userCredential) => {
+
+//         const user = userCredential.user;
+
+//       })
+//       .catch((error) => {
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+//       })
+
+//     )
+//   }
 
 
 
@@ -56,36 +51,58 @@ i18n.translations = {
   },
 };
 
+
+
 i18n.fallbacks = false;
 
-export default () => (
+function test(){
+  return(
+    console.log(db)
+  )
+}
+
+export default function Form() {
+  // const[email, setEmail] = useState('')
+
+  // const[password, setPassword] = useState('')
+
+  const addressSchema = yup.object().shape({
+    email: yup
+        .string().email().required(),
+    password: yup
+        .string().required(),
+  });
+
+  return(
   <Formik
-    initialValues={{ email: '', password: '' }}
+    initialValues={{ email: '', password: '', }}
     validationSchema={addressSchema}
-    onSubmit={values => signInWithEmailAndPassword()}
+    // onSubmit={values => signInWithEmailAndPassword( auth, email, password)}
+    onSubmit={values => console.log(values)}
   >
     {({ handleChange, handleBlur, handleSubmit, values }) => (
       <Body>
         <Header > {i18n.t('Login')} </Header>
         <LogInfo> {i18n.t('InfoLog')} </LogInfo>
         <InputEmail
-          onChange={e => setEmail}
+          onChangeText={handleChange('email')}
           onBlur={handleBlur('email')}
           value={values.email}
           placeholder={'Email'}
         />
           <InputPass
-          onChange={p => setPassword}
+          onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
           value={values.password}
           placeholder={'Senha'}
         />
 
-        <Button onPress={() => handleSubmit()}/>
+        <Button  onPress={() => handleSubmit()}/>
 
       </Body>
     )}
 
   </Formik>
+  )
 
-);
+};
