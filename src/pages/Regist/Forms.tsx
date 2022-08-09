@@ -4,6 +4,9 @@ import {Header, Button, LogInfo, Body, ButtonText, InputPassword, InputEmail, In
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
 import * as yup from "yup";
+import { getFirestore, addDoc, getDocs, setDoc, doc  } from "firebase/firestore";
+import {db} from '../../../config/firebaseinitializeApp'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 
 
@@ -33,9 +36,9 @@ export default function Form() {
 
   // const auth = getAuth();
   // const[email, setEmail] = useState('')
-  
+
   // const[password, setPassword] = useState('')
-  
+
   // const[name, setName] = useState('')
 
   const addressSchema = yup.object().shape({
@@ -46,19 +49,35 @@ export default function Form() {
     name: yup
         .string().required(),
   });
-  
+  const cityRef = doc(db, 'Cidadãos', 'a');
+  // const[name, setName] = useState('')
+  const[email, setEmail] = useState('')
+  const[password, setPassword] = useState('')
+  const auth = getAuth();
+  const createUser = async () => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
 
-  
+        const user = userCredential.user;
+
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('fuuuuuk')
+        // ..
+      });
+    }
   // const[isLog, setLog] = useState(false)
 
   return(
-    
   <Formik
-    initialValues={{ email: 'aaaaaa', password: '' , name: ''}}
+    initialValues={{ email: '', password: '' , name: ''}}
     validationSchema={addressSchema}
     // onSubmit={values => createUserWithEmailAndPassword( auth, email, password)}
-    onSubmit={values => console.log(values)}
+    onSubmit={values => createUser()}
   >
+
     {({ handleChange, handleBlur, handleSubmit, values }) => (
       <Body>
         <Header > {i18n.t('Register')} </Header>
@@ -81,15 +100,20 @@ export default function Form() {
           value={values.password}
           placeholder={'Senha'}
         />
-          <InputPassword
+
+         <InputPassword
           onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
           value={values.password}
           placeholder={'Comfirmar Senha'}
         />
         <Button onPress={() => handleSubmit()}/>
+        
       </Body>
     )}
   </Formik>
   )
 };
+
+
+

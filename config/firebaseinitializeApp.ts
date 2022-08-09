@@ -40,13 +40,13 @@ const db = getFirestore(app)
 // });
 // console.log("Document written with ID: ", docRef.id)
 
-const cityRef = doc(db, 'Cidadãos', 'luiz');
-setDoc(cityRef, { name: 'Luiz', email: 'luizfelipebrustolin62@gmail.com' }, { merge: true });
+// const cityRef = doc(db, 'Cidadãos', 'luiz');
+// setDoc(cityRef, { name: 'Luiz', email: 'luizfelipebrustolin62@gmail.com' }, { merge: true });
 
-const colRef = doc(db, 'User', 'Nathan', 'email', 'nome')
-setDoc(colRef, { name: 'Nathan', email: '@gmail.com' });
+// const colRef = doc(db, 'User', 'Nathan', 'email', 'nome')
+// setDoc(colRef, { name: 'Nathan', email: '@gmail.com' });
 
-console.log(getDocs)
+// console.log(getDocs(t))
 
 const auth = getAuth();
 export {app, db, auth}

@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import {Header, Button, LogInfo, Body, ForgotPassword, InputPass, InputEmail} from './styles'
-import { Formik } from 'formik';
+import { Formik, setNestedObjectValues } from 'formik';
 import i18n from 'i18n-js';
 import * as yup from "yup";
 import {db} from '../../../config/firebaseinitializeApp'
-import { getFirestore, addDoc, getDocs  } from "firebase/firestore";
-
+import { getFirestore, addDoc, getDoc, setDoc, doc  } from "firebase/firestore";
+import { collection, query, where } from "firebase/firestore";
+import {signInWithEmailAndPassword, getAuth} from "firebase/auth"
+import { useNavigation } from '@react-navigation/native';
 
 
 // import { useNavigation } from '@react-navigation/native'
@@ -13,24 +15,6 @@ import { getFirestore, addDoc, getDocs  } from "firebase/firestore";
 
 
 // const navigation = useNavigation();
-// const auth = getAuth();
-//   async function Ferdinando(){
-//     return(
-//         signInWithEmailAndPassword(auth, email, password)
-//       .then((userCredential) => {
-
-//         const user = userCredential.user;
-
-//       })
-//       .catch((error) => {
-//         const errorCode = error.code;
-//         const errorMessage = error.message;
-//       })
-
-//     )
-//   }
-
-
 
 
 i18n.translations = {
@@ -55,17 +39,40 @@ i18n.translations = {
 
 i18n.fallbacks = false;
 
-function test(){
-  return(
-    console.log(db)
-  )
-}
+
+
 
 export default function Form() {
-  // const[email, setEmail] = useState('')
+  const[email, setEmail] = useState('')
+  const[password, setPassword] = useState('')
+  const [err, seterr] = useState('')
+  const navigate = useNavigation();
+  const auth = getAuth();
+  const [Authentic, setAuthentic] = useState(true);
 
-  // const[password, setPassword] = useState('')
+  const login = async () => {
+    setAuthentic(true);
+  
+    signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      // navigate('/home')
+      console.log('FUNCIONAAAAAAA')
+    })
+    .catch(() => {
+      console.log('NÃO FUNCIONAAAAAAA')
+      seterr( 'Email e/ou senha incorreto/os' );
+      setAuthentic(false)
+    })
+  
+  }
+ 
+  const cityRef = doc(db, 'Cidadãos', 'luiz');
 
+  const docRef = collection(db, "Cidadãos");
+
+  const docSnap = getDoc(cityRef);
+  console.log('aqui ó')
+  console.log(docSnap)
   const addressSchema = yup.object().shape({
     email: yup
         .string().email().required(),
@@ -74,11 +81,12 @@ export default function Form() {
   });
 
   return(
+    
   <Formik
     initialValues={{ email: '', password: '', }}
     validationSchema={addressSchema}
     // onSubmit={values => signInWithEmailAndPassword( auth, email, password)}
-    onSubmit={values => console.log(values)}
+    onSubmit={values => setDoc(cityRef, { email: values.email, password: values.password }, { merge: false })}
   >
     {({ handleChange, handleBlur, handleSubmit, values }) => (
       <Body>
@@ -96,13 +104,12 @@ export default function Form() {
           value={values.password}
           placeholder={'Senha'}
         />
-
         <Button  onPress={() => handleSubmit()}/>
 
       </Body>
     )}
-
   </Formik>
   )
-
 };
+
+// setDoc(cityRef, { name: name, email: email }, { merge: true })
