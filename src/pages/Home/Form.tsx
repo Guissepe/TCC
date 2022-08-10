@@ -6,7 +6,7 @@ import * as yup from "yup";
 import {db} from '../../../config/firebaseinitializeApp'
 import { getFirestore, addDoc, getDoc, setDoc, doc  } from "firebase/firestore";
 import { collection, query, where } from "firebase/firestore";
-import {signInWithEmailAndPassword, getAuth} from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -43,29 +43,27 @@ i18n.fallbacks = false;
 
 
 export default function Form() {
-  const[email, setEmail] = useState('')
-  const[password, setPassword] = useState('')
+  const email = 'nathangabrielvf@gmail.com'
+  const password = '123456'
   const [err, seterr] = useState('')
   const navigate = useNavigation();
   const auth = getAuth();
   const [Authentic, setAuthentic] = useState(true);
 
   const login = async () => {
-    setAuthentic(true);
-  
+
+    const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      // navigate('/home')
-      console.log('FUNCIONAAAAAAA')
-    })
-    .catch(() => {
-      console.log('NÃO FUNCIONAAAAAAA')
-      seterr( 'Email e/ou senha incorreto/os' );
-      setAuthentic(false)
-    })
-  
+      .then((userCredential) => {
+        const user = userCredential.user;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+
   }
- 
+
   const cityRef = doc(db, 'Cidadãos', 'luiz');
 
   const docRef = collection(db, "Cidadãos");
@@ -81,12 +79,12 @@ export default function Form() {
   });
 
   return(
-    
+
   <Formik
     initialValues={{ email: '', password: '', }}
     validationSchema={addressSchema}
-    // onSubmit={values => signInWithEmailAndPassword( auth, email, password)}
-    onSubmit={values => setDoc(cityRef, { email: values.email, password: values.password }, { merge: false })}
+    onSubmit={values => signInWithEmailAndPassword( auth, email, password)}
+    // onSubmit={values => login()}
   >
     {({ handleChange, handleBlur, handleSubmit, values }) => (
       <Body>
@@ -104,7 +102,7 @@ export default function Form() {
           value={values.password}
           placeholder={'Senha'}
         />
-        <Button  onPress={() => handleSubmit()}/>
+        <Button  onPress={() => login()}/>
 
       </Body>
     )}

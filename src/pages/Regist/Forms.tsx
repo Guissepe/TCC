@@ -34,13 +34,6 @@ i18n.fallbacks = false;
 
 export default function Form() {
 
-  // const auth = getAuth();
-  // const[email, setEmail] = useState('')
-
-  // const[password, setPassword] = useState('')
-
-  // const[name, setName] = useState('')
-
   const addressSchema = yup.object().shape({
     email: yup
         .string().email().required(),
@@ -51,8 +44,8 @@ export default function Form() {
   });
   const cityRef = doc(db, 'Cidadãos', 'a');
   // const[name, setName] = useState('')
-  const[email, setEmail] = useState('')
-  const[password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const auth = getAuth();
   const createUser = async () => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -65,17 +58,17 @@ export default function Form() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log('fuuuuuk')
-        // ..
+
       });
     }
   // const[isLog, setLog] = useState(false)
 
   return(
   <Formik
-    initialValues={{ email: '', password: '' , name: ''}}
+    initialValues={{ Email: '', Password: '' , name: ''}}
     validationSchema={addressSchema}
-    // onSubmit={values => createUserWithEmailAndPassword( auth, email, password)}
-    onSubmit={values => createUser()}
+    onSubmit={values => createUserWithEmailAndPassword( auth, email, password)}
+    // onSubmit={values => createUser()}
   >
 
     {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -88,27 +81,32 @@ export default function Form() {
           value={values.name}
           placeholder={'Nome'}
         />
+
           <InputEmail
-          onChangeText={handleChange('email')}
+          onChange={Email => setEmail(email)}
+          // onChangeText={handleChange('Email')}
           onBlur={handleBlur('email')}
-          value={values.email}
+          value={values.Email}
           placeholder={'Email'}
         />
+
           <InputPassword
-          onChangeText={handleChange('password')}
+          onChange={P => setPassword(password)}
+          // onChangeText={handleChange('Password')}
           onBlur={handleBlur('password')}
-          value={values.password}
+          value={values.Password}
           placeholder={'Senha'}
         />
 
          <InputPassword
-          onChangeText={handleChange('password')}
+          onChange={P => setPassword(password)}
+          // onChangeText={handleChange('Password')}
           onBlur={handleBlur('password')}
-          value={values.password}
+          value={values.Password}
           placeholder={'Comfirmar Senha'}
         />
-        <Button onPress={() => handleSubmit()}/>
-        
+        <Button onPress={() => createUser} />
+
       </Body>
     )}
   </Formik>

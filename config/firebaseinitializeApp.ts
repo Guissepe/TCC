@@ -5,7 +5,7 @@ import 'firebase/firestore';
 // import { firebase } from "@react-native-firebase/auth";
 import { getFirestore, collection, addDoc, getDocs, doc, setDoc  } from "firebase/firestore";
 import { Auth } from "firebase-admin/lib/auth/auth";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUUY9vuKvPoCRHKblrGxEsDshv7fuThUk",
@@ -48,6 +48,7 @@ const db = getFirestore(app)
 
 // console.log(getDocs(t))
 
-const auth = getAuth();
+
+const auth = getAuth(app);
 export {app, db, auth}
 
