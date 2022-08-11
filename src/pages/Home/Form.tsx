@@ -8,6 +8,8 @@ import { getFirestore, addDoc, getDoc, setDoc, doc  } from "firebase/firestore";
 import { collection, query, where } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from '@react-navigation/native';
+import Mapa from '../Mapa/index'
+import AppRoutes from '../../routes/app.routes';
 
 
 // import { useNavigation } from '@react-navigation/native'
@@ -43,23 +45,24 @@ i18n.fallbacks = false;
 
 
 export default function Form() {
-  const email = 'nathangabrielvf@gmail.com'
-  const password = '123456'
   const [err, seterr] = useState('')
   const navigate = useNavigation();
-  const auth = getAuth();
   const [Authentic, setAuthentic] = useState(true);
 
-  const login = async () => {
+  const login = async (email: string, password: string) => {
 
     const auth = getAuth();
+
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log('log in funcionou')
+        
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log('log in falhou')
       });
 
   }
@@ -83,7 +86,7 @@ export default function Form() {
   <Formik
     initialValues={{ email: '', password: '', }}
     validationSchema={addressSchema}
-    onSubmit={values => signInWithEmailAndPassword( auth, email, password)}
+    onSubmit={values => login(values.email, values.password)}
     // onSubmit={values => login()}
   >
     {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -102,7 +105,7 @@ export default function Form() {
           value={values.password}
           placeholder={'Senha'}
         />
-        <Button  onPress={() => login()}/>
+        <Button  onPress={() => handleSubmit()} />
 
       </Body>
     )}

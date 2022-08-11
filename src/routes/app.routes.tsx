@@ -5,6 +5,8 @@ import Devmenu from 'pages/devmenu';
 import Mapa from 'pages/Mapa';
 import {PropsGroup} from './types';
 
+
+
 const AppRoutes: FC <PropsGroup> = function ({Drawer}: PropsGroup) {
   return (
     <Drawer.Group>
@@ -17,4 +19,3 @@ const AppRoutes: FC <PropsGroup> = function ({Drawer}: PropsGroup) {
 }
 
 export default AppRoutes
-

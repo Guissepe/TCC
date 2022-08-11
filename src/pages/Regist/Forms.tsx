@@ -43,21 +43,21 @@ export default function Form() {
         .string().required(),
   });
   const cityRef = doc(db, 'Cidadãos', 'a');
-  // const[name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const auth = getAuth();
-  const createUser = async () => {
+
+  const createUser = async (email: string, password: string) => {
+
     createUserWithEmailAndPassword(auth, email, password)
+
       .then((userCredential) => {
 
         const user = userCredential.user;
-
+        console.log('usuário criado')
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log('fuuuuuk')
+        console.log('falha ao criar usuário')
 
       });
     }
@@ -65,13 +65,16 @@ export default function Form() {
 
   return(
   <Formik
-    initialValues={{ Email: '', Password: '' , name: ''}}
+    initialValues={{ email: '', password: '' , name: ''}}
     validationSchema={addressSchema}
-    onSubmit={values => createUserWithEmailAndPassword( auth, email, password)}
+    onSubmit={values => {
+      console.log('Criando usuário')
+      createUser(values.email, values.password)}}
     // onSubmit={values => createUser()}
   >
 
-    {({ handleChange, handleBlur, handleSubmit, values }) => (
+    {({ handleChange, handleBlur, handleSubmit, errors, values }) => (
+
       <Body>
         <Header > {i18n.t('Register')} </Header>
         <LogInfo> {i18n.t('infoReg')} </LogInfo>
@@ -83,29 +86,29 @@ export default function Form() {
         />
 
           <InputEmail
-          onChange={Email => setEmail(email)}
-          // onChangeText={handleChange('Email')}
+          // onChangeText={E => setEmail(values.Email)}
+          onChangeText={handleChange('email')}
           onBlur={handleBlur('email')}
-          value={values.Email}
+          value={values.email}
           placeholder={'Email'}
         />
 
           <InputPassword
-          onChange={P => setPassword(password)}
-          // onChangeText={handleChange('Password')}
+          // onChange={P => setPassword(password)}
+          onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
-          value={values.Password}
+          value={values.password}
           placeholder={'Senha'}
         />
 
          <InputPassword
-          onChange={P => setPassword(password)}
-          // onChangeText={handleChange('Password')}
+          // onChange={P => setPassword(password)}
+          onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
-          value={values.Password}
+          value={values.password}
           placeholder={'Comfirmar Senha'}
         />
-        <Button onPress={() => createUser} />
+        <Button onPress={() => handleSubmit()} />
 
       </Body>
     )}
