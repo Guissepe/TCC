@@ -45,18 +45,19 @@ i18n.fallbacks = false;
 
 
 export default function Form() {
-  const [err, seterr] = useState('')
   const navigate = useNavigation();
-  const [Authentic, setAuthentic] = useState(true);
 
   const login = async (email: string, password: string) => {
 
     const auth = getAuth();
 
+    
+  
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log('log in funcionou')
+        // navigate('../')
         
       })
       .catch((error) => {
@@ -67,13 +68,13 @@ export default function Form() {
 
   }
 
-  const cityRef = doc(db, 'Cidadãos', 'luiz');
+  // const cityRef = doc(db, 'Cidadãos', 'luiz');
 
-  const docRef = collection(db, "Cidadãos");
+  // const docRef = collection(db, "Cidadãos");
 
-  const docSnap = getDoc(cityRef);
-  console.log('aqui ó')
-  console.log(docSnap)
+  // const docSnap = getDoc(cityRef);
+  // console.log('aqui ó')
+  // console.log(docSnap)
   const addressSchema = yup.object().shape({
     email: yup
         .string().email().required(),
