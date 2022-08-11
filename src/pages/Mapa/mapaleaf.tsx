@@ -4,7 +4,6 @@ import type { LatLngLiteral } from "leaflet";
 import React, { useEffect, useState } from "react";
 import "react-modern-drawer/dist/index.css";
 
-// import { Button } from './styles'
 import {
   ActivityIndicator,
   Alert,
@@ -15,10 +14,14 @@ import {
   Text,
   View,
   TextInput,
-  Image,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { block } from "react-native-reanimated";
+import Slider from "pages/devmenu/Addroute";
+import { Right } from "./styles";
+import Dacerto from "./perfil";
 import { mapMarkers, mapShapes } from "./mockData";
+import Bora from "./Noti";
 
 const mapLayers: Array<MapLayer> = [
   {
@@ -119,12 +122,37 @@ const styles = StyleSheet.create({
     left: 290,
     top: -21,
   },
+  Test: {
+    backgroundColor: "#ffffffd2",
+  },
+  searchjunior: {
+    backgroundColor: "#d1d1d1",
+    borderRadius: 10,
+    position: "absolute",
+    top: "17%",
+    right: "10%",
+  },
 });
+
+// return (
+//   <View>
+//     <View style={{ display: isPressed ? "block" : "none" }} />
+//     <Text>Ola, pressionei o botao</Text>
+//   </View>
+// );
 
 function Map() {
   const [zoom, setZoom] = useState(14);
   const [mapCenterPosition, setMapCenterPosition] = useState(initialPosition);
   const [ownPosition, setOwnPosition] = useState<null | LatLngLiteral>(null);
+  // const [isPressed, setShow] = useState(false);
+  // const InfoDosPia = () => {
+  //   setShow((f) => !f);
+  // };
+  // return console.log("pRESSIONEI O BOTAOOOOOOOOOOOOOOOOOOO");
+  const MinimaIdeia = () => {
+    console.log("cliquei");
+  };
 
   useEffect(() => {
     const getLocationAsync = async () => {
@@ -187,6 +215,7 @@ function Map() {
           zoom={zoom}
         />
       </View>
+
       <Button
         onPress={() => {
           setMapCenterPosition(initialPosition);
@@ -194,17 +223,23 @@ function Map() {
         }}
         title="Reset Map"
       />
-      <View style={styles.searchbox}>
-        <TextInput style={styles.search} />
+      <View style={styles.searchjunior}>
+        <Bora />
       </View>
-      <View style={styles.Perfil}>
+      <View style={styles.searchbox}>
+        <Dacerto />
+      </View>
+
+      {/* <View style={styles.Perfil}>
         <TouchableOpacity style={styles.buttonPerfil}>
+          <Right style={{ display: isActive ? "block" : "none" }} />
+          <TouchableOpacity onPress={Defined} />
           <Image
             source={require("./image/download.png")}
             style={styles.buttonImage}
           />
         </TouchableOpacity>
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 }

@@ -1,10 +1,6 @@
-import { View } from 'react-native';
-import Map from '../Mapa/mapaleaf'
-
+import { View } from "react-native";
+import Map from "./mapaleaf";
 
 export default function Mapa() {
-  return (
-    <Map/>
-  );
+  return <Map />;
 }
-
