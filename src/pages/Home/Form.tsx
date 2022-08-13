@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
-import {Header, Button, LogInfo, Body, ForgotPassword, InputPass, InputEmail} from './styles'
-import { Formik, setNestedObjectValues } from 'formik';
+import {Text, useWindowDimensions, Dimensions, View } from 'react-native';
+import {Header, Button, LogInfo, Body, ButtonText, ForgotPassword, InputPass, InputEmail, Textodecriaconta} from './styles'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
 import * as yup from "yup";
 import {db} from '../../../config/firebaseinitializeApp'
@@ -20,24 +23,29 @@ import AppRoutes from '../../routes/app.routes';
 
 
 i18n.translations = {
-  en: { Login: 'Login',
-  InfoLog: 'Enter your account here!',
-  Register: 'Register',
-  infoReg: 'Create a new account here!'
+  en: {
+    Login: "Login",
+    InfoLog: "Enter your account here!",
+    Register: "Register",
+    infoReg: "Create a new account here!",
   },
-  ja: { Login: 'こんにちは',
-  InfoLog: 'flksajdflkasdf',
-  Register: 'こんにちは',
-  infoReg: 'flksajdflkasdf'
+  ja: {
+    Login: "こんにちは",
+    InfoLog: "flksajdflkasdf",
+    Register: "こんにちは",
+    infoReg: "flksajdflkasdf",
   },
-  ptBR: { Login: 'Login',
-  InfoLog: 'Entre na sua conta aqui',
-  Register: 'Registre se',
-  infoReg: 'Crie sua conta aqui'
+  ptBR: {
+    Login: "Login",
+    InfoLog: "Entre na sua conta aqui",
+    Register: "Registre se",
+    infoReg: "Crie sua conta aqui",
   },
 };
 
+i18n.locale = "en";
 
+i18n.fallbacks = true;
 
 i18n.fallbacks = false;
 
@@ -95,19 +103,27 @@ export default function Form() {
         <Header > {i18n.t('Login')} </Header>
         <LogInfo> {i18n.t('InfoLog')} </LogInfo>
         <InputEmail
-          onChangeText={handleChange('email')}
-          onBlur={handleBlur('email')}
+          onChangeText={handleChange("email")}
+          onBlur={handleBlur("email")}
           value={values.email}
-          placeholder={'Email'}
+          placeholder="Email"
         />
-          <InputPass
-          onChangeText={handleChange('password')}
-          onBlur={handleBlur('password')}
+        <InputPass
+          onChangeText={handleChange("password")}
+          onBlur={handleBlur("password")}
           value={values.password}
-          placeholder={'Senha'}
+          placeholder="Senha"
         />
         <Button  onPress={() => handleSubmit()} />
 
+          <Text style={{ paddingTop: "5px", fontSize: 20 }}>Entra</Text>
+        </Button>
+        <Textodecriaconta>
+          <Text style={{ fontFamily: "Poppins", fontSize: 20, right: "200px" }}>
+            Cria sua Conta ?
+          </Text>
+        </Textodecriaconta>
+        <View />
       </Body>
     )}
   </Formik>

@@ -1,36 +1,36 @@
-import { MapMarker, MapShape } from 'expo-leaflet'
+import { MapMarker, MapShape } from "expo-leaflet";
 
 export const circle: MapShape = {
-  shapeType: 'circle',
-  color: '#123123',
-  id: '1',
+  shapeType: "circle",
+  color: "#123123",
+  id: "1",
   center: { lat: 34.225727, lng: -77.94471 },
   radius: 2000,
-}
+};
 
 export const circleMarker: MapShape = {
-  shapeType: 'circle',
-  color: 'red',
-  id: '2',
+  shapeType: "circle",
+  color: "red",
+  id: "2",
   center: { lat: 38.437424, lng: -78.867912 },
   radius: 15,
-}
+};
 
 export const polygon: MapShape = {
-  shapeType: 'polygon',
-  color: 'blue',
-  id: '3',
+  shapeType: "polygon",
+  color: "blue",
+  id: "3",
   positions: [
     { lat: 38.80118939192329, lng: -74.69604492187501 },
     { lat: 38.19502155795575, lng: -74.65209960937501 },
     { lat: 39.07890809706475, lng: -71.46606445312501 },
   ],
-}
+};
 
 export const multiPolygon: MapShape = {
-  shapeType: 'polygon',
-  color: 'violet',
-  id: '4',
+  shapeType: "polygon",
+  color: "violet",
+  id: "4",
   positions: [
     [
       { lat: 37.13842453422676, lng: -74.28955078125001 },
@@ -46,23 +46,23 @@ export const multiPolygon: MapShape = {
       { lat: 37.36579146999664, lng: -72.88330078125001 },
     ],
   ],
-}
+};
 
 export const polyline: MapShape = {
-  shapeType: 'polyline',
-  color: 'orange',
-  id: '5',
+  shapeType: "polyline",
+  color: "orange",
+  id: "5",
   positions: [
     { lat: 35.411438052435486, lng: -78.67858886718751 },
     { lat: 35.9602229692967, lng: -79.18945312500001 },
     { lat: 35.97356075349624, lng: -78.30505371093751 },
   ],
-}
+};
 
 export const multiPolyline: MapShape = {
-  shapeType: 'polyline',
-  color: 'purple',
-  id: '5a',
+  shapeType: "polyline",
+  color: "purple",
+  id: "5a",
   positions: [
     [
       { lat: 36.36822190085111, lng: -79.26086425781251 },
@@ -75,17 +75,17 @@ export const multiPolyline: MapShape = {
       { lat: 35.007502842952896, lng: -80.837402343750017 },
     ],
   ],
-}
+};
 
 export const rectangle: MapShape = {
-  shapeType: 'rectangle',
-  color: 'yellow',
-  id: '6',
+  shapeType: "rectangle",
+  color: "yellow",
+  id: "6",
   bounds: [
     [36.5, -75.7],
     [38.01, -73.13],
   ],
-}
+};
 
 export const mapShapes: Array<MapShape> = [
   // {
@@ -168,7 +168,7 @@ export const mapShapes: Array<MapShape> = [
   //     [38.01, -73.13],
   //   ],
   // },
-]
+];
 
 export const mapMarkers: MapMarker[] = [
   // {
@@ -199,4 +199,4 @@ export const mapMarkers: MapMarker[] = [
   //   `,
   //   size: [24, 24],
   // },
-]
+];
