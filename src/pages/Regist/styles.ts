@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Header = styled.Text`
   position: absolute;
-  color: #b6bbc4;
+  color: #000000;
   font-size: 12vw;
   padding-left: 28%;
   padding-right: 25%;
@@ -15,59 +15,59 @@ export const Button = styled.TouchableOpacity`
   height: 14vw;
   margin-top: 8vw;
   background-color: #ffffff;
-  width: 50vw;
+  width: 40vw;
   border: 3px solid rgb(252, 109, 24);
-  border-radius: 12px;
+  border-radius: 90px;
   font-family: -apple-system white;
-  margin-left: 13vw;
+  margin-left: 28vw;
 `;
+
 
 export const InputEmail = styled.TextInput`
   ::placeholder {
     color: red;
   }
   font-size: 12pw;
-  padding: 2vw;
-  margin: 2vw;
   color: #313d4f;
   background: white;
   border-color: #313d4f;
   border: 1px;
   border: solid;
-  height: 10vw;
-  border-radius: 12px;
+  height: 12vw;
+  border-radius: 90px;
+   margin-left: 4vw;
+  margin-right: 4vw;
 `;
 export const InputPassword = styled.TextInput`
   ::placeholder {
     color: red;
   }
   font-size: 12pw;
-  padding: 2vw;
-  margin: 2vw;
   color: #313d4f;
   background: white;
   border-color: #313d4f;
   border: 1px;
   border: solid;
-  height: 10vw;
-  border-radius: 12px;
+  height: 12vw;
+  border-radius: 90px;
+  margin-left: 4vw;
+  margin-right: 4vw;
 `;
 export const InputName = styled.TextInput`
   ::placeholder {
     color: red;
   }
   font-size: 12pw;
-  /* margin: -20vw; */
-  padding: 2vw;
-  /* padding: 0px; */
-  margin: 2vw;
   color: #313d4f;
   background: white;
   border-color: #313d4f;
   border: 1px;
   border: solid;
-  height: 10vw;
-  border-radius: 12px;
+  height: 12vw;
+  border-radius: 90px;
+  margin-left: 4vw;
+  margin-right: 4vw;
+
 `;
 export const LogInfo = styled.Text`
   position: absolute;

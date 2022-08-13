@@ -1,8 +1,22 @@
 import React, {useState} from 'react';
 import {Text, useWindowDimensions, Dimensions, View } from 'react-native';
-import {Header, Button, LogInfo, Body, ButtonText, ForgotPassword, InputPass, InputEmail, Textodecriaconta} from './styles'
+import { Header,
+  Button,
+  LogInfo,
+  Body,
+  ButtonText,
+  ForgotPassword,
+  InputPass,
+  InputEmail,
+  Image,
+  AiPreto,
+  Aibranco,
+  Texto,
+  Registro,
+  Textodecriaconta,
+  } from './styles'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik,  Field, ErrorMessage } from 'formik';
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
 import * as yup from "yup";
@@ -15,11 +29,14 @@ import Mapa from '../Mapa/index'
 import AppRoutes from '../../routes/app.routes';
 
 
+
 // import { useNavigation } from '@react-navigation/native'
 // import AppRoutes from '../../routes/app.routes'
 
 
+
 // const navigation = useNavigation();
+
 
 
 i18n.translations = {
@@ -76,13 +93,6 @@ export default function Form() {
 
   }
 
-  // const cityRef = doc(db, 'Cidadãos', 'luiz');
-
-  // const docRef = collection(db, "Cidadãos");
-
-  // const docSnap = getDoc(cityRef);
-  // console.log('aqui ó')
-  // console.log(docSnap)
   const addressSchema = yup.object().shape({
     email: yup
         .string().email().required(),
@@ -90,40 +100,51 @@ export default function Form() {
         .string().required(),
   });
 
-  return(
+  return (
 
   <Formik
     initialValues={{ email: '', password: '', }}
     validationSchema={addressSchema}
     onSubmit={values => login(values.email, values.password)}
-    // onSubmit={values => login()}
   >
     {({ handleChange, handleBlur, handleSubmit, values }) => (
       <Body>
+         <View>
+          <Aibranco source={require("./imagemlogin/Vector_2.png")} />
+          {/* eslint-disable-next-line global-require */}
+          <AiPreto source={require("./imagemlogin/Vector_5.png")} />
+          {/* eslint-disable-next-line global-require */}
+          <Image source={require("./imagemlogin/Vector_12.png")} />
+        </View>
+        
         <Header > {i18n.t('Login')} </Header>
+
         <LogInfo> {i18n.t('InfoLog')} </LogInfo>
+
         <InputEmail
           onChangeText={handleChange("email")}
           onBlur={handleBlur("email")}
           value={values.email}
           placeholder="Email"
         />
+        <Button onPress={() => handleSubmit()}>
+          {/* <Text style={{ textAlign: "center" }}>Click me</Text> */}
+
+          <Text style={{ paddingTop: "5px", fontSize: 20 }}>Entra</Text>
+        </Button>
         <InputPass
           onChangeText={handleChange("password")}
           onBlur={handleBlur("password")}
           value={values.password}
           placeholder="Senha"
         />
-        <Button  onPress={() => handleSubmit()} />
+        
 
-          <Text style={{ paddingTop: "5px", fontSize: 20 }}>Entra</Text>
-        </Button>
-        <Textodecriaconta>
+        <Textodecriaconta>  
           <Text style={{ fontFamily: "Poppins", fontSize: 20, right: "200px" }}>
             Cria sua Conta ?
           </Text>
         </Textodecriaconta>
-        <View />
       </Body>
     )}
   </Formik>

@@ -4,7 +4,6 @@ import { LatLngLiteral, Marker } from 'leaflet';
 import React, { useEffect, useState } from 'react';
 import Slider from './Configs';
 import 'react-modern-drawer/dist/index.css';
-i
 
 import {
   ActivityIndicator,
@@ -18,11 +17,8 @@ import {
   TextInput,
 } from "react-native";
 import { MapLayer } from 'expo-leaflet'
-import { mapMarkers, mapShapes } from './mockData'
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { block } from "react-native-reanimated";
-import Slider from "pages/devmenu/Addroute";
-import { Right } from "./styles";
 import Dacerto from "./perfil";
 import { mapMarkers, mapShapes } from "./mockData";
 import Bora from "./Noti";

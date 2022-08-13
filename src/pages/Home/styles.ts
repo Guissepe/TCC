@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const Header = styled.Text`
-  color: #b6bbc4;
+  color: #000000;
   font-size: 12vw;
   padding-left: 30%;
   padding-right: 25%;
@@ -19,29 +19,26 @@ export const Header = styled.Text`
 // `;
 export const InputEmail = styled.TextInput`
   font-size: 12pw;
-  padding: 2vw;
-  margin: 2vw;
-  color: #313d4f;
   background: white;
-  border-color: #313d4f;
+  border-top-color: #000000;
   border: 1px;
   border: solid;
-  height: 10vw;
-  border-radius: 12px;
+  height: 14vw;
+  max-width: 80%
+  border-top-right-radius: 90px;
 `;
 
 export const InputPass = styled.TextInput`
   font-size: 12pw;
-  padding: 2vw;
-  margin: 2vw;
-  color: #313d4f;
   background: white;
-  border-color: #313d4f;
+  border-bottom-color: #313d4f;
   border: 1px;
   border: solid;
-  height: 10vw;
-  border-radius: 12px;
+  height: 14vw;
+  max-width: 80%
+  border-bottom-right-radius: 90px;
 `;
+
 // export const LogInfo = styled.Text`
 //   color: #313d4f;
 //   font-family: BlinkMacSystemFont;
@@ -55,6 +52,7 @@ export const Body = styled.View`
   max-width: 400px;
   max-height: 800px;
 `;
+
 export const ButtonText = styled.Text`
   padding-top: 10px;
   padding-left: 35%;
@@ -77,15 +75,17 @@ export const ForgotPassword = styled.TouchableOpacity`
 export const Button = styled.TouchableOpacity`
   text-align: center;
   font-size: 16vw;
-  height: 14vw;
-  margin-top: 8vw;
-  background-color: #ffffff;
-  width: 50vw;
+  height: 16vw;
+  width: 16vw;
   border: 3px solid rgb(252, 109, 24);
-  border-radius: 12px;
+  border-radius: 90px;
   font-family: -apple-system white;
-  margin-left: 13vw;
-  right: -45px;
+  margin-left: 32vw;
+  bottom: 72vw;
+  left: 38vw
+  position: absolute
+  background: #ffffff;
+
 `;
 export const Input = styled.TextInput`
   font-size: 12pw;
@@ -115,28 +115,28 @@ export const Image = styled.Image`
 `;
 
 export const AiPreto = styled.Image`
-  /* position: absolute; */
+  position: absolute;
   width: 350px;
   height: 300px;
   left: -40px;
 `;
 
 export const Aibranco = styled.Image`
-  position: absolute;
+  // position: absolute;
   width: 100px;
-  height: 200px;
-  /* left: -10px; */
+  height: 100px;
+  left: -10px; 
 `;
 export const Verde = styled.Image`
   position: absolute;
-  /* width: 366.44px; */
+  /* width: 366.44px; */x
   width: 50vw;
   height: 100vw;
   right: 0vw;
   bottom: 0vw;
 `;
 export const Azul = styled.Image`
-  // position: absolute;
+  position: absolute;6
   width: 1100px;
   height: 200px;
   /* left: -10px; */

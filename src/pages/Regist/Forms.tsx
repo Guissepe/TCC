@@ -4,10 +4,10 @@ import { Text, useWindowDimensions, Dimensions, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as Localization from "expo-localization";
 import i18n from "i18n-js";
-import { Right } from "pages/Mapa/styles";
 import {
   Header,
   Button,
+  
   LogInfo,
   Body,
   ButtonText,
@@ -140,6 +140,7 @@ export default function Form() {
           />
         </InputdosGuri>
         <Button style={{ top: "-100px" }} onPress={() => handleSubmit()}>
+        
           <Text
             style={{ paddingTop: "10px", textAlign: "center", fontSize: 20 }}
           >

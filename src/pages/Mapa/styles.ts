@@ -67,7 +67,7 @@ export const ForgotPassword = styled.TouchableOpacity`
   font-family: -apple-system white;
 `;
 
-      `;
+      
       export const Addbutton = styled.TouchableOpacity `
       height: 10vw;
       width: 10vw;

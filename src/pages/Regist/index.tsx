@@ -1,9 +1,3 @@
-import Form from './Forms';
-export default function Regist() {
-    return(
-      <Form/>
-    )
-=======
 import React, { useState } from "react";
 import { Formik } from "formik";
 import { Text, useWindowDimensions, Dimensions, View } from "react-native";
@@ -23,5 +17,4 @@ import Form from "./Forms";
 
 export default function Regist() {
   return <Form />;
->>>>>>> perfilllll
 }
