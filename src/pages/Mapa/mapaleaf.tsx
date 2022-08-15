@@ -1,10 +1,10 @@
-import { ExpoLeaflet } from 'expo-leaflet'
-import * as Location from 'expo-location'
-import type { LatLngLiteral } from 'leaflet'
-import React, { useEffect, useState } from 'react'
-import 'react-modern-drawer/dist/index.css'
+import { ExpoLeaflet } from 'expo-leaflet';
+import * as Location from 'expo-location';
+import { LatLngLiteral, Marker } from 'leaflet';
+import React, { useEffect, useState } from 'react';
+import Slider from './Configs';
+import 'react-modern-drawer/dist/index.css';
 
-// import { Button } from './styles'
 import {
   ActivityIndicator,
   Alert,
@@ -15,129 +15,174 @@ import {
   Text,
   View,
   TextInput,
-} from 'react-native'
+} from "react-native";
 import { MapLayer } from 'expo-leaflet'
-import { mapMarkers, mapShapes } from './mockData'
-
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { block } from "react-native-reanimated";
+import Dacerto from "./perfil";
+import { mapMarkers, mapShapes } from "./mockData";
+import Bora from "./Noti";
 
 const mapLayers: Array<MapLayer> = [
   {
     attribution:
       '&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     baseLayerIsChecked: true,
-    baseLayerName: 'OpenStreetMap',
-    layerType: 'TileLayer',
-    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    baseLayerName: "OpenStreetMap",
+    layerType: "TileLayer",
+    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   },
   {
     baseLayerIsChecked: true,
     baseLayer: true,
-    baseLayerName: 'Mapbox',
-    layerType: 'TileLayer',
+    baseLayerName: "Mapbox",
+    layerType: "TileLayer",
     url: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid2hlcmVzbXl3YXZlcyIsImEiOiJjanJ6cGZtd24xYmU0M3lxcmVhMDR2dWlqIn0.QQSWbd-riqn1U5ppmyQjRw`,
   },
-]
+];
 
 const mapOptions = {
   attributionControl: false,
-  zoomControl: Platform.OS === 'web',
-}
+  zoomControl: Platform.OS === "web",
+};
 
 const initialPosition = {
   lat: -25.74922656712633,
-  lng: -53.06181907653809
-}
+  lng: -53.06181907653809,
+};
 
 const styles = StyleSheet.create({
-  searchbox:{
-    backgroundColor: '#d1d1d1',
+  searchbox: {
+    backgroundColor: "#d1d1d1",
     borderRadius: 10,
-    position: 'absolute',
-    top: '10%',
-    right: '7%',
+    position: "absolute",
+    top: "10%",
+    right: "7%",
   },
   search: {
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
     flex: 0.1,
-    width: '90%',
-    height: '8vw',
+    width: "90%",
+    height: "8vw",
     borderRadius: 20,
-
   },
   container: {
     flex: 1,
-    backgroundColor: '#050505',
-    position: 'relative',
+    backgroundColor: "#050505",
+    position: "relative",
   },
   header: {
     height: 60,
-    backgroundColor: 'dodgerblue',
+    backgroundColor: "dodgerblue",
     paddingHorizontal: 10,
     paddingTop: 30,
-    width: '100%',
+    width: "100%",
   },
   headerText: {
-    color: 'white',
+    color: "white",
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   mapControls: {
-    backgroundColor: 'rgba(255,255,255,.5)',
+    backgroundColor: "rgba(255,255,255,.5)",
     borderRadius: 5,
     bottom: 25,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     left: 0,
     marginHorizontal: 10,
     padding: 7,
     right: 0,
-
   },
   mapButton: {
-    alignItems: 'center',
+    alignItems: "center",
     height: 42,
-    justifyContent: 'center',
+    justifyContent: "center",
     width: 42,
   },
   mapButtonEmoji: {
     fontSize: 28,
   },
-})
+  Perfil: {
+    flexDirection: "row",
+    top: "-93%",
+  },
+  buttonImage: {
+    padding: 15,
+    borderRadius: 15,
+  },
+  buttonPerfil: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#ffffffd2",
+    borderRadius: 4,
+    margin: 3,
+    width: 12,
+    height: 18,
+    left: 290,
+    top: -21,
+  },
+  Test: {
+    backgroundColor: "#ffffffd2",
+  },
+  searchjunior: {
+    backgroundColor: "#d1d1d1",
+    borderRadius: 10,
+    position: "absolute",
+    top: "17%",
+    right: "10%",
+  },
+});
+
+// return (
+//   <View>
+//     <View style={{ display: isPressed ? "block" : "none" }} />
+//     <Text>Ola, pressionei o botao</Text>
+//   </View>
+// );
 
 function Map() {
-  const [zoom, setZoom] = useState(14)
-  const [mapCenterPosition, setMapCenterPosition] = useState(initialPosition)
-  const [ownPosition, setOwnPosition] = useState<null | LatLngLiteral>(null)
+  const [zoom, setZoom] = useState(14);
+  const [mapCenterPosition, setMapCenterPosition] = useState(initialPosition);
+  const [ownPosition, setOwnPosition] = useState<null | LatLngLiteral>(null);
+  const MinimaIdeia = () => {
+    console.log("cliquei");
+  };
 
   useEffect(() => {
     const getLocationAsync = async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync()
-      if (status !== 'granted') {
-        console.warn('Permission to access location was denied')
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        console.warn("Permission to access location was denied");
       }
 
-      let location = await Location.getCurrentPositionAsync({})
+      const location = await Location.getCurrentPositionAsync({});
       if (!ownPosition) {
         setOwnPosition({
           lat: location.coords.latitude,
           lng: location.coords.longitude,
-        })
+        });
       }
-    }
+    };
 
     getLocationAsync().catch((error) => {
-      console.error(error)
-    })
-  }, [])
+      console.error(error);
+    });
+  }, []);
+
+
+{/* <NativeStacknavigationProp<RootStackParamList>> */}
+
+
 
   return (
-
     <SafeAreaView style={styles.container}>
+
       <View style={{ flex: 1, position: 'relative' }}>
+
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
           mapCenterPosition={mapCenterPosition}
-
           mapLayers={mapLayers}
           mapMarkers={mapMarkers}
           mapOptions={mapOptions}
@@ -145,67 +190,64 @@ function Map() {
           maxZoom={20}
           onMessage={(message) => {
             switch (message.tag) {
-              case 'onMapMarkerClicked':
+              case "onMapMarkerClicked":
                 Alert.alert(
-                  `Map Marker Touched, ID: ${message.mapMarkerId || 'unknown'}`,
-                )
-                break
-              case 'onMapClicked':
+                  `Map Marker Touched, ID: ${message.mapMarkerId || "unknown"}`
+                );
+                break;
+              case "onMapClicked":
                 Alert.alert(
                   `Map Touched at:`,
-                  `${message.location.lat}, ${message.location.lng}`,
-                )
-                break
-              case 'onMoveEnd':
-                setMapCenterPosition(message.mapCenter)
-                break
-              case 'onZoomEnd':
-                setZoom(message.zoom)
-                break
+                  `${message.location.lat}, ${message.location.lng}`
+                );
+                break;
+              case "onMoveEnd":
+                setMapCenterPosition(message.mapCenter);
+                break;
+              case "onZoomEnd":
+                setZoom(message.zoom);
+                break;
               default:
-                if (['onMove'].includes(message.tag)) {
-                  return
+                if (["onMove"].includes(message.tag)) {
+                  return;
                 }
-                console.log(message)
+                console.log(message);
             }
           }}
           zoom={zoom}
         />
-
       </View>
+
       <Button
         onPress={() => {
-          setMapCenterPosition(initialPosition)
-          setZoom(14)
+          setMapCenterPosition(initialPosition);
+          setZoom(14);
         }}
         title="Reset Map"
       />
+      <View style={styles.searchjunior}>
+        <Bora />
+      </View>
       <View style={styles.searchbox}>
-        <TextInput style={styles.search}/>
-
+        <Dacerto />
+        <Slider/>
       </View>
 
-
+      {/* <View style={styles.Perfil}>
+        <TouchableOpacity style={styles.buttonPerfil}>
+          <Right style={{ display: isActive ? "block" : "none" }} />
+          <TouchableOpacity onPress={Defined} />
+          <Image
+            source={require("./image/download.png")}
+            style={styles.buttonImage}
+          />
+        </TouchableOpacity>
+      </View> */}
     </SafeAreaView>
-  )
+  );
 }
 
 export default Map;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -224,7 +266,7 @@ export default Map;
 //         {lat: -25.73829663835028, lng: -53.052034378051765},
 //         {lat: -25.739968567034165, lng: -53.06053161621094},
 //         {lat: -25.742577888498243, lng: -53.05995225906373},
-//         {lat: -25.742249310430076, lng: -53.05713057518006},
+//         {lat: -25.742249310430076, lng: -53.05713057518006} help meeeeeeeew,
 //         {lat: -25.74242326363417, lng: -53.05707693099976},
 
 //     return (
@@ -246,6 +288,5 @@ export default Map;
 //         <Marker position={[-25.73130907492065, -53.07512283325196]}></Marker>
 //         <Marker position={[-25.728583523896933, -53.061497211456306]}></Marker>
 //         <Marker position={[-25.733705961771808, -53.05866479873658]}></Marker>
-
 
 // export default Mapa

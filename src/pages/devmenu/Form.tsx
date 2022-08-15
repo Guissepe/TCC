@@ -17,40 +17,38 @@ import Routes from 'routes';
 
 // import { getAuth, createUserWithEmailAndPassword, Auth } from "firebase/auth";
 
-
 i18n.translations = {
-  en: { Login: 'Login',
-  InfoLog: 'Enter your account here!',
-  Register: 'Register',
-  infoReg: 'Create a new account here!',
-  Rotas: 'Routes'
+  en: {
+    Login: "Login",
+    InfoLog: "Enter your account here!",
+    Register: "Register",
+    infoReg: "Create a new account here!",
+    Rotas: "Routes",
   },
-  ja: { Login: 'こんにちは',
-  InfoLog: 'flksajdflkasdf',
-  Register: 'こんにちは',
-  infoReg: 'flksajdflkasdf',
-  Rotas: 'ACHUNGJNGPIEN'
+  ja: {
+    Login: "こんにちは",
+    InfoLog: "flksajdflkasdf",
+    Register: "こんにちは",
+    infoReg: "flksajdflkasdf",
+    Rotas: "ACHUNGJNGPIEN",
   },
-  ptBR: { Login: 'Login',
-  InfoLog: 'Entre na sua conta aqui',
-  Register: 'Registre se',
-  infoReg: 'Crie sua conta aqui',
-  Rotas: 'Rotas'
+  ptBR: {
+    Login: "Login",
+    InfoLog: "Entre na sua conta aqui",
+    Register: "Registre se",
+    infoReg: "Crie sua conta aqui",
+    Rotas: "Rotas",
   },
 };
 
-i18n.locale = 'en';
+i18n.locale = "en";
 
 i18n.fallbacks = true;
 
 export default function Routedit() {
-
-  return(
+  return (
     <Body>
-
-      <Slider/>
-
+      <Slider />
     </Body>
-
-  )
+  );
 }
