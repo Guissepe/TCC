@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     padding: 7,
     height: 20,
     width: "70%",
-    left: "20%",
+    left: "10%",
   },
 });
 
