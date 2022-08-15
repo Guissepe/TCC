@@ -53,9 +53,9 @@ export const polyline: MapShape = {
   color: "orange",
   id: "5",
   positions: [
-    { lat: 35.411438052435486, lng: -78.67858886718751 },
-    { lat: 35.9602229692967, lng: -79.18945312500001 },
-    { lat: 35.97356075349624, lng: -78.30505371093751 },
+    { lat: -25.74936185614262, lng: -53.052849769592285 },
+    { lat: -25.748588633834604, lng: -53.052492103915796 },
+    { lat: -25.748298866864353, lng: -53.0555641651123 },
   ],
 };
 
@@ -132,21 +132,176 @@ export const mapShapes: Array<MapShape> = [
   //     ],
   //   ],
   // },
-  // {
-  //   shapeType: 'polyline',
-  //   color: 'orange',
-  //   id: '5',
-  //   positions: [
-  //     { lat: 35.411438052435486, lng: -78.67858886718751 },
-  //     { lat: 35.9602229692967, lng: -79.18945312500001 },
-  //     { lat: 35.97356075349624, lng: -78.30505371093751 },
-  //   ],
-  // },
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "1",
+    center: { lat: -25.75433845215439, lng: -53.07014748529735 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "2",
+    center: { lat: -25.74242326363417, lng: -53.05707693099976 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "3",
+    center: { lat: -25.752744252179628, lng: -53.058065781908915 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "4",
+    center: { lat: -25.752744252179628, lng: -53.058065781908915 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "5",
+    center: { lat: -25.752744252179628, lng: -53.058065781908915 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "6",
+    center: { lat: -25.752715055574416, lng: -53.05791027244841 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "7",
+    center: { lat: -25.738248316362302, lng: -53.06370735168458 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "8",
+    center: { lat: -25.75143467156226, lng: -53.057765530355574 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "9",
+    center: { lat: -25.750685761308624, lng: -53.05383605057636 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "10",
+    center: { lat: -25.75078239515508, lng: -53.05380388566684 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "11",
+    center: { lat: -25.74934252914973, lng: -53.0517339706421 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "12",
+    center: { lat: -25.743737568535213, lng: -53.068492412567146 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "13",
+    center: { lat: -25.733821938942054, lng: -53.07111024856568 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "14",
+    center: { lat: -25.73130907492065, lng: -53.07512283325196 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "15",
+    center: { lat: -25.728583523896933, lng: -53.061497211456306 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "16",
+    center: { lat: -25.733705961771808, lng: -53.05866479873658 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "blue",
+    id: "17",
+    center: { lat: -25.76184643634075, lng: -53.061497211456306 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "circleMarker",
+    color: "black",
+    id: "18",
+    center: { lat: -25.742249310430076, lng: -53.05713057518006 },
+    radius: 5,
+  },
+
+  {
+    shapeType: "polyline",
+    color: "orange",
+    id: "5",
+    positions: [
+      /* { lat: -25.74936185614262, lng: -53.052849769592285 },
+      { lat: -25.748588633834604, lng: -53.052492103915796 },
+      { lat: -25.748298866864353, lng: -53.0555641651123 },
+      { lat: -25.749313538654487, lng: -53.06108951568604 },
+      { lat: -25.74928454815217, lng: -53.06111097335816 },
+      { lat: -25.745187152664922, lng: -53.062033653259284 },
+      { lat: -25.738248316362302, lng: -53.06370735168458 },
+      { lat: -25.736354078953365, lng: -53.05349349975587 },
+      { lat: -25.73634441439938, lng: -53.05250644683838 },
+      { lat: -25.73829663835028, lng: -53.052034378051765 },
+      { lat: -25.739968567034165, lng: -53.06053161621094 },
+      { lat: -25.742577888498243, lng: -53.05995225906373 },
+      { lat: -25.742249310430076, lng: -53.05713057518006 },
+      { lat: -25.74242326363417, lng: -53.05707693099976 }, */
+    ],
+  },
   // {
   //   shapeType: 'polyline',
   //   color: 'purple',
   //   id: '6',
-  //   positions: [
+  //   positions:
   //     [
   //       { lat: 36.36822190085111, lng: -79.26086425781251 },
   //       { lat: 36.659606226479696, lng: -79.28833007812501 },

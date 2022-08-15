@@ -1,6 +1,13 @@
-import React, {useState} from 'react';
-import {Text, useWindowDimensions, Dimensions, View } from 'react-native';
-import { Header,
+import React from "react";
+import { Text, useWindowDimensions, Dimensions, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Localization from "expo-localization";
+import i18n from "i18n-js";
+import * as yup from "yup";
+import auth from "@react-native-firebase/auth";
+import {
+  Header,
   Button,
   LogInfo,
   Body,
@@ -8,36 +15,9 @@ import { Header,
   ForgotPassword,
   InputPass,
   InputEmail,
-  Image,
-  AiPreto,
-  Aibranco,
-  Texto,
-  Registro,
-  Textodecriaconta,
-  } from './styles'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Formik,  Field, ErrorMessage } from 'formik';
-import * as Localization from 'expo-localization';
-import i18n from 'i18n-js';
-import * as yup from "yup";
-import {db} from '../../../config/firebaseinitializeApp'
-import { getFirestore, addDoc, getDoc, setDoc, doc  } from "firebase/firestore";
-import { collection, query, where } from "firebase/firestore";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigation } from '@react-navigation/native';
-import Mapa from '../Mapa/index'
-import AppRoutes from '../../routes/app.routes';
-
-
-
-// import { useNavigation } from '@react-navigation/native'
-// import AppRoutes from '../../routes/app.routes'
-
-
-
-// const navigation = useNavigation();
-
-
+} from "./styles";
+// import { AuthProvider, useAuth } from "../Auth/index";
+// import { getAuth, createUserWithEmailAndPassword, Auth } from "firebase/auth";
 
 i18n.translations = {
   en: {
@@ -62,45 +42,86 @@ i18n.translations = {
 
 i18n.locale = "en";
 
-i18n.fallbacks = true;
+export default () => (
+  <Formik
+    initialValues={{ email: '', password: '' }}
+    validate={values => {
+      const errors = {};
+      if (!values.email) {
+        errors.email = 'Required';
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+      ) {
+        errors.email = 'Invalid email address';
+      }
+      return errors;
+    }}
+    onSubmit={values => console.log(values)}
+  >
+    {({ handleChange, handleBlur, handleSubmit, values }) => (
+      <Body>
+        <Header > {i18n.t('Login')} </Header>
+        <LogInfo> {i18n.t('InfoLog')} </LogInfo>
+        <InputEmail
+          onChangeText={handleChange('email')}
+          onBlur={handleBlur('email')}
+          value={values.email}
+          placeholder={'Email'}
+        />
+          <InputPass
+          onChangeText={handleChange('password')}
+          onBlur={handleBlur('password')}
+          value={values.password}
+          placeholder={'Senha'}
+        />
 
-i18n.fallbacks = false;
+        <Button onPress={() => handleSubmit()}/>
+
+      </Body>
+    )}
+
+  </Formik>
+
+);
+// const auth = getAuth();
+// createUserWithEmailAndPassword(auth, InputEmail, InputPass)
+//   .then((userCredential) => {
+//     // Signed in
+//     const user = userCredential.user;
+//     // ...
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     // ..
+//   });
+
+          //  <Header > Log in </Header>
+          //   <LogInfo> Create a new account here!</LogInfo>
+          //   <Input placeholder="Email" onChangeText={(email) => setEmail(email)}></Input>
+          //   <Text></Text>
+          //   <Input  placeholder="Senha" onChangeText={(password) => setPassword(password)}></Input>
+          //   <Text></Text>
+
+          //   <ForgotPassword ><Text style={{color: 'lightgray', fontSize: 20}}>Esqueci minha senha</Text></ForgotPassword>
+          //   <Button><Text style={{color: 'Black', fontSize: 25, padding: 15}}> Login </Text></Button>
 
 
 
 
-export default function Form() {
-  const navigate = useNavigation();
 
-  const login = async (email: string, password: string) => {
+// import React, {useState} from 'react';
+// import {Text, useWindowDimensions, Dimensions, View } from 'react-native';
+// import {Header, Button, LogInfo, Body, ButtonText, ForgotPassword, InputPass, Inputemail} from './styles'
+// import { Formik, Form, Field, ErrorMessage } from 'formik';
+// import * as Localization from 'expo-localization';
+// // import { Conections } from './Props'
+// import i18n from 'i18n-js';
+// import translations from './Translations';
 
-    const auth = getAuth();
 
-    
-  
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log('log in funcionou')
-        // navigate('../')
-        
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('log in falhou')
-      });
 
-  }
-
-  const addressSchema = yup.object().shape({
-    email: yup
-        .string().email().required(),
-    password: yup
-        .string().required(),
-  });
-
-  return (
+// function Login() {
 
   <Formik
     initialValues={{ email: '', password: '', }}
@@ -116,19 +137,19 @@ export default function Form() {
           {/* eslint-disable-next-line global-require */}
           <Image source={require("./imagemlogin/Vector_12.png")} />
         </View>
-        
+
         <Header > {i18n.t('Login')} </Header>
 
-        <LogInfo> {i18n.t('InfoLog')} </LogInfo>
-
-        <InputEmail
-          onChangeText={handleChange("email")}
-          onBlur={handleBlur("email")}
-          value={values.email}
-          placeholder="Email"
-        />
-        <Button onPress={() => handleSubmit()}>
-          {/* <Text style={{ textAlign: "center" }}>Click me</Text> */}
+//   return (
+//     <Body>
+//       <Header > Log in </Header>
+//     <LogInfo> {i18n.t('food')} </LogInfo>
+//     <Inputemail placeholder="Email"></Inputemail>
+//     <Text></Text>
+//     <InputPass  placeholder="Senha"></InputPass>
+//     <Text></Text>
+//     <ForgotPassword ><Text style={{color: 'lightgray', fontSize: 20}}>Esqueci minha senha</Text></ForgotPassword>
+//     <Button ><Text style={{color: 'Black', fontSize: 25, padding: 15}}> Login </Text></Button>
 
           <Text style={{ paddingTop: "5px", fontSize: 20 }}>Entra</Text>
         </Button>
@@ -138,17 +159,6 @@ export default function Form() {
           value={values.password}
           placeholder="Senha"
         />
-        
 
-        <Textodecriaconta>  
-          <Text style={{ fontFamily: "Poppins", fontSize: 20, right: "200px" }}>
-            Cria sua Conta ?
-          </Text>
-        </Textodecriaconta>
-      </Body>
-    )}
-  </Formik>
-  )
-};
 
-// setDoc(cityRef, { name: name, email: email }, { merge: true })
+

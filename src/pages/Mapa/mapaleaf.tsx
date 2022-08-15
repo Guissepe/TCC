@@ -1,10 +1,4 @@
-import { ExpoLeaflet } from 'expo-leaflet';
-import * as Location from 'expo-location';
-import { LatLngLiteral, Marker } from 'leaflet';
-import React, { useEffect, useState } from 'react';
-import Slider from './Configs';
-import 'react-modern-drawer/dist/index.css';
-
+import { ExpoLeaflet, MapLayer } from "expo-leaflet";
 import {
   ActivityIndicator,
   Alert,
@@ -12,16 +6,21 @@ import {
   Platform,
   SafeAreaView,
   StyleSheet,
-  Text,
   View,
-  TextInput,
+  TouchableOpacity,
+  Image,
 } from "react-native";
-import { MapLayer } from 'expo-leaflet'
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { block } from "react-native-reanimated";
-import Dacerto from "./perfil";
+import * as Location from "expo-location";
+import { LatLngLiteral, polyline } from "leaflet";
+import React, { useEffect, useState } from "react";
+import "react-modern-drawer/dist/index.css";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import i18n from "i18n-js";
+import { Marker } from "react-leaflet";
 import { mapMarkers, mapShapes } from "./mockData";
-import Bora from "./Noti";
+import FlatListDropDown from "./droptdown";
+import Slider from "./Configs";
+import { Header, Addbutton, Slidescreen, AddChanges } from "./styles";
 
 const mapLayers: Array<MapLayer> = [
   {
@@ -53,18 +52,19 @@ const initialPosition = {
 
 const styles = StyleSheet.create({
   searchbox: {
-    backgroundColor: "#d1d1d1",
-    borderRadius: 10,
+    borderRadius: 4,
     position: "absolute",
-    top: "10%",
-    right: "7%",
+    top: "15%",
+    right: "10%",
+    display: "flex",
+    alignSelf: "center",
   },
   search: {
     backgroundColor: "#ffffff",
-    flex: 0.1,
+    flex: 0.2,
     width: "90%",
     height: "8vw",
-    borderRadius: 20,
+    borderRadius: 10,
   },
   container: {
     flex: 1,
@@ -99,47 +99,63 @@ const styles = StyleSheet.create({
     height: 42,
     justifyContent: "center",
     width: 42,
+    margin: 0,
   },
   mapButtonEmoji: {
     fontSize: 28,
   },
-  Perfil: {
-    flexDirection: "row",
-    top: "-93%",
-  },
-  buttonImage: {
-    padding: 15,
-    borderRadius: 15,
-  },
-  buttonPerfil: {
+  buttonStyle: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#ffffffd2",
-    borderRadius: 4,
-    margin: 3,
-    width: 12,
-    height: 18,
-    left: 290,
-    top: -21,
+    backgroundColor: "#fcfdff",
+    margin: 1,
+    width: 30,
+    height: 33,
+    left: "-500%",
+    top: -70,
   },
-  Test: {
-    backgroundColor: "#ffffffd2",
+  buttonImage: {
+    padding: 7,
+    height: 20,
+    width: "70%",
+    left: "20%",
   },
-  searchjunior: {
-    backgroundColor: "#d1d1d1",
-    borderRadius: 10,
-    position: "absolute",
-    top: "17%",
-    right: "10%",
+  buttonPesquise: {
+    margin: 1,
+  },
+  engrenagem: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fcfdff",
+    margin: 1,
+    width: 30,
+    height: 33,
+    left: "-991%",
+    top: -65,
+  },
+  imgengrenagem: {
+    padding: 7,
+    height: 20,
+    width: "70%",
+    left: "20%",
+  },
+  estrela: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fcfdff",
+    margin: 1,
+    width: 30,
+    height: 33,
+    left: "-20%",
+    top: -70,
+  },
+  imgestrela: {
+    padding: 7,
+    height: 20,
+    width: "70%",
+    left: "10%",
   },
 });
-
-// return (
-//   <View>
-//     <View style={{ display: isPressed ? "block" : "none" }} />
-//     <Text>Ola, pressionei o botao</Text>
-//   </View>
-// );
 
 function Map() {
   const [zoom, setZoom] = useState(14);
@@ -170,16 +186,23 @@ function Map() {
     });
   }, []);
 
+  const [isActive, setSlider] = useState(false);
 
-{/* <NativeStacknavigationProp<RootStackParamList>> */}
+  const Defined = () => {
+    setSlider((current) => !current);
+  };
 
-
+  {
+    /* <NativeStacknavigationProp<RootStackParamList>> */
+  }
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* <View style={styles.header}>
+        <Text style={styles.headerText}>expo-leaflet</Text>
+      </View> */}
 
-      <View style={{ flex: 1, position: 'relative' }}>
-
+      <View style={{ flex: 1, position: "relative" }}>
         <ExpoLeaflet
           loadingIndicator={() => <ActivityIndicator />}
           mapCenterPosition={mapCenterPosition}
@@ -229,64 +252,45 @@ function Map() {
         <Bora />
       </View>
       <View style={styles.searchbox}>
-        <Dacerto />
-        <Slider/>
-      </View>
-
-      {/* <View style={styles.Perfil}>
-        <TouchableOpacity style={styles.buttonPerfil}>
-          <Right style={{ display: isActive ? "block" : "none" }} />
-          <TouchableOpacity onPress={Defined} />
+        <TouchableOpacity style={styles.buttonStyle} onPress={Defined}>
           <Image
-            source={require("./image/download.png")}
+            source={require("./image/lupa.png")}
             style={styles.buttonImage}
           />
         </TouchableOpacity>
-      </View> */}
+        <View>
+          <View style={{ display: isActive ? "block" : "none" }}>
+            <Formik
+              initialValues={{ email: "", password: "" }}
+              onSubmit={(values) => console.log(values)}
+            >
+              {({ handleChange, handleBlur, handleSubmit, values }) => (
+                <Slidescreen>
+                  <FlatListDropDown />
+                  <AddChanges onPress={() => handleSubmit()} />
+                </Slidescreen>
+              )}
+            </Formik>
+          </View>
+          <View />
+        </View>
+        <View>
+          <TouchableOpacity style={styles.engrenagem}>
+            <Image
+              source={require("./image/engrenagem.png")}
+              style={styles.imgengrenagem}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.estrela}>
+            <Image
+              source={require("./image/estrela.png")}
+              style={styles.imgestrela}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
 
 export default Map;
-
-
-
-
-
-
-// {lat: -25.74936185614262, lng: -53.052849769592285},
-//         {lat: -25.748588633834604, lng: -53.052492103915796},
-//         {lat: -25.748298866864353, lng: -53.0555641651123},
-//         {lat: -25.749313538654487, lng: -53.06108951568604},
-//         {lat: -25.74928454815217, lng: -53.06111097335816},
-//         {lat: -25.745187152664922, lng: -53.062033653259284},
-//         {lat: -25.738248316362302, lng: -53.06370735168458},
-//         {lat: -25.736354078953365, lng: -53.05349349975587},
-//         {lat: -25.73634441439938, lng: -53.05250644683838},
-//         {lat: -25.73829663835028, lng: -53.052034378051765},
-//         {lat: -25.739968567034165, lng: -53.06053161621094},
-//         {lat: -25.742577888498243, lng: -53.05995225906373},
-//         {lat: -25.742249310430076, lng: -53.05713057518006} help meeeeeeeew,
-//         {lat: -25.74242326363417, lng: -53.05707693099976},
-
-//     return (
-
-//         </Marker>
-//         <Marker position={[ -25.75433845215439,-53.07014748529735]}></Marker>
-//         <Marker position={[-25.74242326363417, -53.05707693099976]}></Marker>
-//         <Marker position={[-25.752744252179628, -53.058065781908915]}></Marker>
-//         <Marker position={[ -25.752744252179628, -53.058065781908915]}></Marker>
-//         <Marker position={[-25.752744252179628, -53.058065781908915]}></Marker>
-//         <Marker position={[-25.752715055574416, -53.05791027244841]}></Marker>
-//         <Marker position={[-25.751502314836518, -53.05772264380956]}></Marker>
-//         <Marker position={[-25.75143467156226, -53.057765530355574]}></Marker>
-//         <Marker position={[-25.750685761308624, -53.05383605057636]}></Marker>
-//         <Marker position={[-25.75078239515508, -53.05380388566684]}></Marker>
-//         <Marker position={[-25.74934252914973, -53.0517339706421]}></Marker>
-//         <Marker position={[-25.743737568535213, -53.068492412567146]}></Marker>
-//         <Marker position={[-25.733821938942054, -53.07111024856568]}></Marker>
-//         <Marker position={[-25.73130907492065, -53.07512283325196]}></Marker>
-//         <Marker position={[-25.728583523896933, -53.061497211456306]}></Marker>
-//         <Marker position={[-25.733705961771808, -53.05866479873658]}></Marker>
-
-// export default Mapa

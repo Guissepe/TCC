@@ -66,51 +66,51 @@ export const ForgotPassword = styled.TouchableOpacity`
   padding-left: 10%;
   font-family: -apple-system white;
 `;
+export const Addbutton = styled.TouchableOpacity`
+  height: 5vw;
+  width: 5vw;
+  margin-top: 8vw;
+  background-color: white;
+  border-radius: 20;
+  font-family: -apple-system white;
+  margin-right: 13vw;
+  top: -90px;
+  left: 1vw;
+`;
+export const Lengbutton = styled.TouchableOpacity`
+  height: 10vw;
+  width: 10vw;
+  margin-top: 8vw;
+  background-color: red;
+  border-radius: 90;
+  font-family: -apple-system white;
+  margin-right: 13vw;
+`;
 
-      
-      export const Addbutton = styled.TouchableOpacity `
-      height: 10vw;
-      width: 10vw;
-      margin-top: 8vw;
-      background-color: #117bdf;
-      border-radius: 90;
-      font-family: -apple-system white;
-      margin-right: 13vw;
-      `;
-      export const Lengbutton = styled.TouchableOpacity `
-      height: 10vw;
-      width: 10vw;
-      margin-top: 8vw;
-      background-color: red;
-      border-radius: 90;
-      font-family: -apple-system white;
-      margin-right: 13vw;
-      `;
-
-      export const AddChanges = styled.TouchableOpacity `
-      height: 8%;
-      width:32%;
-      background-color: #117bdf;
-      border-radius: 12px;
-      font-family: -apple-system white;
-      margin-left: 34%;
-
-      `;
-      export const InputRname = styled.TextInput`
-      font-size: 12pw;
-      padding: 2vw;
-      margin: 2vw;
-      color: #313d4f;
-      background: #192737;
-      border-color: #313d4f;
-      border: 1px;
-      border: solid;
-      height: 20%;
-      border-radius: 12px;
-      `;
-      export const Slidescreen= styled.View`
-      background: darkgrey;
-      border-style: solid;
-      border-color: black;
-      border-radius: 5;
-    `;
+export const AddChanges = styled.TouchableOpacity`
+  height: 8%;
+  width: 32%;
+  background-color: #117bdf;
+  border-radius: 12px;
+  font-family: -apple-system white;
+  margin-left: 34%;
+`;
+export const InputRname = styled.TextInput`
+  font-size: 12pw;
+  padding: 2vw;
+  margin: 2vw;
+  color: #313d4f;
+  background: #192737;
+  border-color: #313d4f;
+  border: 1px;
+  border: solid;
+  height: 20%;
+  border-radius: 12px;
+`;
+export const Slidescreen = styled.View`
+  width: 50%;
+  height: 50%;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5;
+`;

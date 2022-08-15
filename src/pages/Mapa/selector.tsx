@@ -1,28 +1,27 @@
-// import React from 'react';
-// import { View, Text, StyleSheet, Pressable } from 'react-native';
-// import { useTranslation } from 'i18n-js';
+import React from "react";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { useTranslation } from "i18n-js";
 
-
-// const LANGUAGES = [
-//   { code: 'en', label: 'English' },
-//   { code: 'fr', label: 'Français' }
-// ];
+const LANGUAGES = [
+  { code: "en", label: "English" },
+  { code: "fr", label: "Français" },
+];
 
 // const Selector = () => {
 //   const { i18n } = useTranslation();
 //   const selectedLanguageCode = i18n.language;
 
-//   const setLanguage = code => {
-//     return i18n.changeLanguage(code);
-//   };
+  const setLanguage = (code) => {
+    return i18n.changeLanguage(code);
+  };
 
-//   return (
-//     <View style={styles.container}>
-//       <View style={styles.row}>
-//         <Text style={styles.title}>Select a Language</Text>
-//       </View>
-//       {LANGUAGES.map(language => {
-//         const selectedLanguage = language.code === selectedLanguageCode;
+  return (
+    <View style={styles.container}>
+      <View style={styles.row}>
+        <Text style={styles.title}>Select a Language</Text>
+      </View>
+      {LANGUAGES.map((language) => {
+        const selectedLanguage = language.code === selectedLanguageCode;
 
 //         return (
 //           <Pressable
@@ -43,35 +42,35 @@
 //   );
 // };
 
-// const styles = StyleSheet.create({
-//   container: {
-//     paddingTop: 60,
-//     paddingHorizontal: 16
-//   },
-//   row: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'space-between'
-//   },
-//   title: {
-//     color: '#444',
-//     fontSize: 28,
-//     fontWeight: '600'
-//   },
-//   buttonContainer: {
-//     marginTop: 10
-//   },
-//   text: {
-//     fontSize: 18,
-//     color: '#000',
-//     paddingVertical: 4
-//   },
-//   selectedText: {
-//     fontSize: 18,
-//     fontWeight: '600',
-//     color: 'tomato',
-//     paddingVertical: 4
-//   }
-// });
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 60,
+    paddingHorizontal: 16,
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  title: {
+    color: "#444",
+    fontSize: 28,
+    fontWeight: "600",
+  },
+  buttonContainer: {
+    marginTop: 10,
+  },
+  text: {
+    fontSize: 18,
+    color: "#000",
+    paddingVertical: 4,
+  },
+  selectedText: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "tomato",
+    paddingVertical: 4,
+  },
+});
 
 // export default Selector;
